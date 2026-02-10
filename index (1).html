@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Print Studio | Custom Prints & Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --dark: #0f0f0f;
+            --dark-card: #1a1a1a;
+            --border: #2a2a2a;
+            --accent: #6366f1;
+            --text: #f5f5f5;
+            --text-dim: #a3a3a3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Header/Hero Section */
+        header {
+            padding: 60px 24px 40px;
+            text-align: center;
+            position: relative;
+            background: var(--dark);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .tagline {
+            font-size: 1rem;
+            color: var(--text-dim);
+            font-weight: 400;
+            margin-bottom: 32px;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 60px 24px;
+        }
+
+        .section-title {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+            text-align: center;
+            color: var(--text);
+            letter-spacing: -0.5px;
+        }
+
+        /* Instagram-Style Feed */
+        .feed {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        .feed-post {
+            background: var(--dark-card);
+            margin-bottom: 24px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            animation: fadeInUp 0.5s ease-out backwards;
+        }
+
+        /* Remove bottom margin in grid layouts */
+        @media (min-width: 640px) {
+            .feed-post {
+                margin-bottom: 0;
+            }
+        }
+
+        .feed-post:nth-child(1) { animation-delay: 0.1s; }
+        .feed-post:nth-child(2) { animation-delay: 0.2s; }
+        .feed-post:nth-child(3) { animation-delay: 0.3s; }
+        .feed-post:nth-child(4) { animation-delay: 0.4s; }
+        .feed-post:nth-child(5) { animation-delay: 0.5s; }
+        .feed-post:nth-child(6) { animation-delay: 0.6s; }
+
+        .post-header {
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .post-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .post-info h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+
+        .post-info p {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .post-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: #232323;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .post-image::before {
+            content: 'TAP TO ADD YOUR PHOTO';
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-family: 'Work Sans', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .post-actions {
+            padding: 12px 16px;
+            display: flex;
+            gap: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .action-btn:hover {
+            color: var(--primary);
+        }
+
+        .post-content {
+            padding: 12px 16px 16px;
+        }
+
+        .post-title {
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .post-description {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .post-tags {
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: var(--primary);
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--dark-card);
+            padding: 40px 32px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .about-content h3 {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+            color: var(--text-dim);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .services-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .services-list li {
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            background: #232323;
+            border-left: 3px solid var(--primary);
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .services-list li:hover {
+            background: #2a2a2a;
+            transform: translateX(4px);
+        }
+
+        .services-list strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-item {
+            background: var(--dark-card);
+            padding: 24px;
+            margin-bottom: 16px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+        }
+
+        .contact-item:hover {
+            border-color: var(--primary);
+        }
+
+        .contact-item h3 {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text);
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .contact-item a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid var(--border);
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (min-width: 640px) {
+            .feed {
+                max-width: 1200px;
+                padding: 0 24px;
+            }
+
+            /* Two column grid for tablets */
+            .feed {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .logo {
+                font-size: 3.5rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            /* Three column grid for desktop */
+            .feed {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 28px;
+                max-width: 1400px;
+            }
+        }
+
+        @media (min-width: 1440px) {
+            /* Larger desktop - still 3 columns but more breathing room */
+            .feed {
+                max-width: 1500px;
+                gap: 32px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header/Hero -->
+        <header>
+            <h1 class="logo">PRINT STUDIO</h1>
+            <p class="tagline">Precision 3D Printing & Custom Design</p>
+        </header>
+
+        <!-- Instagram-Style Feed -->
+        <section id="portfolio">
+            <h2 class="section-title">How 3D Printing Changed My Life</h2>
+            <div class="feed">
+                <div class="feed-post">
+                    <div class="post-header">
+                        <div class="post-avatar">🎮</div>
+                        <div class="post-info">
+                            <h3>Xbox Controller Holder</h3>
+                            <p>Gaming Setup</p>
+                        </div>
+                    </div>
+                    <div class="post-image">🎮</div>
+                    <div class="post-actions">
+                        <a href="tel:+15551234567" class="action-btn" title="Call us">📞</a>
+                        <a href="https://wa.me/15551234567?text=Hi!%20I'm%20interested%20in%20the%20Xbox%20Controller%20Holder" class="action-btn" title="WhatsApp">💬</a>
+                        <a href="mailto:hello@printstudio.com?subject=Interest%20in%20Xbox%20Controller%20Holder" class="action-btn" title="Email">✉️</a>
+                    </div>
+                    <div class="post-content">
+                        <p class="post-title">No more controllers on the floor!</p>
+                        <p class="post-description">Designed a custom wall-mounted holder that keeps my controllers organized and charged. Matches my setup perfectly.</p>
+                        <p class="post-tags">#3DPrinting #Gaming #Organization</p>
+                    </div>
+                </div>
+
+                <div class="feed-post">
+                    <div class="post-header">
+                        <div class="post-avatar">💊</div>
+                        <div class="post-info">
+                            <h3>Medicine Cabinet Organizer</h3>
+                            <p>Home Organization</p>
+                        </div>
+                    </div>
+                    <div class="post-image">💊</div>
+                    <div class="post-actions">
+                        <a href="tel:+15551234567" class="action-btn" title="Call us">📞</a>
+                        <a href="https://wa.me/15551234567?text=Hi!%20I'm%20interested%20in%20the%20Medicine%20Cabinet%20Organizer" class="action-btn" title="WhatsApp">💬</a>
+                        <a href="mailto:hello@printstudio.com?subject=Interest%20in%20Medicine%20Cabinet%20Organizer" class="action-btn" title="Email">✉️</a>
+                    </div>
+                    <div class="post-content">
+                        <p class="post-title">Finally found my vitamins on the first try</p>
+                        <p class="post-description">Custom drawer dividers that fit my cabinet perfectly. Everything has its place and nothing rolls around anymore.</p>
+                        <p class="post-tags">#HomeOrganization #3DPrint #LifeHack</p>
+                    </div>
+                </div>
+
+                <div class="feed-post">
+                    <div class="post-header">
+                        <div class="post-avatar">🚰</div>
+                        <div class="post-info">
+                            <h3>Sink Soap Drain Tray</h3>
+                            <p>Kitchen Solution</p>
+                        </div>
+                    </div>
+                    <div class="post-image">🚰</div>
+                    <div class="post-actions">
+                        <a href="tel:+15551234567" class="action-btn" title="Call us">📞</a>
+                        <a href="https://wa.me/15551234567?text=Hi!%20I'm%20interested%20in%20the%20Sink%20Soap%20Drain%20Tray" class="action-btn" title="WhatsApp">💬</a>
+                        <a href="mailto:hello@printstudio.com?subject=Interest%20in%20Sink%20Soap%20Drain%20Tray" class="action-btn" title="Email">✉️</a>
+                    </div>
+                    <div class="post-content">
+                        <p class="post-title">No more soap puddles!</p>
+                        <p class="post-description">Designed a drainage tray that fits perfectly next to my sink. Water drains away and the counter stays clean and dry.</p>
+                        <p class="post-tags">#Kitchen #SmartDesign #Functional</p>
+                    </div>
+                </div>
+
+                <div class="feed-post">
+                    <div class="post-header">
+                        <div class="post-avatar">🔌</div>
+                        <div class="post-info">
+                            <h3>Cable Management Clips</h3>
+                            <p>Desk Setup</p>
+                        </div>
+                    </div>
+                    <div class="post-image">🔌</div>
+                    <div class="post-actions">
+                        <a href="tel:+15551234567" class="action-btn" title="Call us">📞</a>
+                        <a href="https://wa.me/15551234567?text=Hi!%20I'm%20interested%20in%20the%20Cable%20Management%20Clips" class="action-btn" title="WhatsApp">💬</a>
+                        <a href="mailto:hello@printstudio.com?subject=Interest%20in%20Cable%20Management%20Clips" class="action-btn" title="Email">✉️</a>
+                    </div>
+                    <div class="post-content">
+                        <p class="post-title">Clean desk, clear mind</p>
+                        <p class="post-description">Custom cable clips that attach under my desk. All my charging cables stay exactly where I need them, no more tangled mess.</p>
+                        <p class="post-tags">#DeskSetup #CableManagement #Productivity</p>
+                    </div>
+                </div>
+
+                <div class="feed-post">
+                    <div class="post-header">
+                        <div class="post-avatar">🔑</div>
+                        <div class="post-info">
+                            <h3>Wall Key Holder</h3>
+                            <p>Entryway Organization</p>
+                        </div>
+                    </div>
+                    <div class="post-image">🔑</div>
+                    <div class="post-actions">
+                        <a href="tel:+15551234567" class="action-btn" title="Call us">📞</a>
+                        <a href="https://wa.me/15551234567?text=Hi!%20I'm%20interested%20in%20the%20Wall%20Key%20Holder" class="action-btn" title="WhatsApp">💬</a>
+                        <a href="mailto:hello@printstudio.com?subject=Interest%20in%20Wall%20Key%20Holder" class="action-btn" title="Email">✉️</a>
+                    </div>
+                    <div class="post-content">
+                        <p class="post-title">Never lose my keys again</p>
+                        <p class="post-description">Mounted by the door with individual hooks for car keys, house keys, and mail keys. Everything in one spot means I'm never late.</p>
+                        <p class="post-tags">#HomeOrganization #EveryDayCarry #SmartLiving</p>
+                    </div>
+                </div>
+
+                <div class="feed-post">
+                    <div class="post-header">
+                        <div class="post-avatar">📱</div>
+                        <div class="post-info">
+                            <h3>Phone Stand with Cable Route</h3>
+                            <p>Bedside Essential</p>
+                        </div>
+                    </div>
+                    <div class="post-image">📱</div>
+                    <div class="post-actions">
+                        <a href="tel:+15551234567" class="action-btn" title="Call us">📞</a>
+                        <a href="https://wa.me/15551234567?text=Hi!%20I'm%20interested%20in%20the%20Phone%20Stand%20with%20Cable%20Route" class="action-btn" title="WhatsApp">💬</a>
+                        <a href="mailto:hello@printstudio.com?subject=Interest%20in%20Phone%20Stand" class="action-btn" title="Email">✉️</a>
+                    </div>
+                    <div class="post-content">
+                        <p class="post-title">Perfect bedside charging station</p>
+                        <p class="post-description">Built-in cable routing keeps everything tidy. Phone sits at the perfect angle for checking notifications without picking it up.</p>
+                        <p class="post-tags">#PhoneStand #BedroomSetup #Charging</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About/Services Section -->
+        <section id="about">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <h3>Bringing Your Ideas to Life</h3>
+                <p>We specialize in high-quality 3D printing services for individuals, businesses, and creators. From concept to completion, we work with you to turn your vision into reality with precision and care.</p>
+                
+                <p>Whether you need a single custom piece or production runs, we offer professional-grade printing with attention to detail and fast turnaround times.</p>
+
+                <h3>What We Offer</h3>
+                <ul class="services-list">
+                    <li><strong>Custom Design:</strong> Work with us to create unique 3D models tailored to your needs</li>
+                    <li><strong>Multiple Materials:</strong> PLA, PETG, ABS, TPU, and specialty filaments available</li>
+                    <li><strong>Finishing Services:</strong> Sanding, painting, and post-processing for a polished look</li>
+                    <li><strong>Quick Turnaround:</strong> Most projects completed within 3-5 business days</li>
+                    <li><strong>Consultation:</strong> Free quotes and design consultations for all projects</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>📞 Phone</h3>
+                    <a href="tel:+15551234567">+1 (555) 123-4567</a>
+                </div>
+
+                <div class="contact-item">
+                    <h3>💬 WhatsApp</h3>
+                    <a href="https://wa.me/15551234567?text=Hi!%20I'm%20interested%20in%20your%203D%20printing%20services">Message Us</a>
+                </div>
+
+                <div class="contact-item">
+                    <h3>✉️ Email</h3>
+                    <a href="mailto:hello@printstudio.com">hello@printstudio.com</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2024 Print Studio. All ri

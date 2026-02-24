@@ -1,0 +1,106 @@
+{
+  "products": [
+    {
+      "id": "xbox-controller-holder",
+      "title": "Xbox Controller Holder",
+      "category": "Gaming Setup",
+      "description": "Wall-mounted holder keeps controllers organized and charged. Custom design fits any gaming setup perfectly.",
+      "price": 25,
+      "image": "https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=600&h=400&fit=crop",
+      "images": [
+        "https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?w=800&h=600&fit=crop"
+      ],
+      "imageAlt": "3D printed gaming accessories",
+      "avatar": ""
+    },
+    {
+      "id": "medicine-cabinet-organizer",
+      "title": "Medicine Cabinet Organizer",
+      "category": "Home Organization",
+      "description": "Custom drawer dividers designed to fit your cabinet. Keep medications and vitamins neatly organized.",
+      "price": 30,
+      "image": "https://images.unsplash.com/photo-1587236165094-34d6e5b76d6f?w=600&h=400&fit=crop",
+      "images": [
+        "https://images.unsplash.com/photo-1587236165094-34d6e5b76d6f?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&h=600&fit=crop"
+      ],
+      "imageAlt": "3D printed organizer",
+      "avatar": ""
+    },
+    {
+      "id": "sink-soap-drain-tray",
+      "title": "Sink Soap Drain Tray",
+      "category": "Kitchen Solution",
+      "description": "Drainage tray designed for your sink. Keeps counters clean and dry with built-in drainage channels.",
+      "price": 20,
+      "image": "https://images.unsplash.com/photo-1605647540924-852290f6b0d5?w=600&h=400&fit=crop",
+      "images": [
+        "https://images.unsplash.com/photo-1605647540924-852290f6b0d5?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1585659722983-3a675dabf23d?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800&h=600&fit=crop"
+      ],
+      "imageAlt": "3D printed household item",
+      "avatar": ""
+    },
+    {
+      "id": "cable-management-clips",
+      "title": "Cable Management Clips",
+      "category": "Desk Setup",
+      "description": "Desk-mounted cable clips keep charging cables organized. No more tangled mess or cables falling behind the desk.",
+      "price": 15,
+      "image": "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&h=400&fit=crop",
+      "images": [
+        "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=600&fit=crop"
+      ],
+      "imageAlt": "3D printed desk accessories",
+      "avatar": ""
+    },
+    {
+      "id": "wall-key-holder",
+      "title": "Wall Key Holder",
+      "category": "Entryway Organization",
+      "description": "Wall-mounted with individual hooks for all your keys. Perfect for entryway organization and never losing keys again.",
+      "price": 22,
+      "image": "https://images.unsplash.com/photo-1614088489084-a5e7c0c3b9a8?w=600&h=400&fit=crop",
+      "images": [
+        "https://images.unsplash.com/photo-1614088489084-a5e7c0c3b9a8?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1582139329536-e7284fece509?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1558036117-15d82a90b9b1?w=800&h=600&fit=crop"
+      ],
+      "imageAlt": "3D printed wall mount",
+      "avatar": ""
+    },
+    {
+      "id": "phone-stand-cable-route",
+      "title": "Phone Stand with Cable Route",
+      "category": "Bedside Essential",
+      "description": "Bedside charging station with built-in cable routing. Perfect viewing angle for notifications and video calls.",
+      "price": 18,
+      "image": "https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=600&h=400&fit=crop",
+      "images": [
+        "https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1556656793-08538906a9f8?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800&h=600&fit=crop"
+      ],
+      "imageAlt": "3D printed phone stand",
+      "avatar": ""
+    }
+  ],
+  "contact": {
+    "phone": "+19057156464",
+    "phoneDisplay": "+1 (905) 715-6464",
+    "whatsapp": "9057156464",
+    "email": "julbolpez@gmail.com"
+  }
+}

@@ -6,12 +6,12 @@
       "category": "Drinkware Accessory",
       "description": "Custom 3D printed replacement cap designed to fit Stanley-size bottles. Durable and leak-resistant design.",
       "price": 15,
-      "image": "images/bottle1.jpeg",
+      "image": "images/placeholder.png",
       "images": [
-        "images/bottle1.jpeg",
-        "images/bottle2.jpeg",
-        "images/bottle3.jpeg",
-        "images/bottle4.jpeg"
+        "images/placeholder.png",
+        "images/placeholder.png",
+        "images/placeholder.png",
+        "images/placeholder.png"
       ],
       "imageAlt": "3D printed water bottle cap",
       "avatar": ""
@@ -22,10 +22,10 @@
       "category": "Home Organization",
       "description": "Custom drawer dividers designed to fit your cabinet. Keep medications and vitamins neatly organized.",
       "price": 30,
-      "image": "images/medicine_cabinet1.jpeg",
+      "image": "images/placeholder.png",
       "images": [
-        "images/medicine_cabinet1.jpeg",
-        "images/medicine_cabinet2.jpeg"
+        "images/placeholder.png",
+        "images/placeholder.png"
       ],
       "imageAlt": "3D printed medicine cabinet organizer",
       "avatar": ""
@@ -36,10 +36,10 @@
       "category": "Vehicle Organization",
       "description": "Custom-fit storage tray designed specifically for Honda Ridgeline. Keeps your truck bed organized and items secure.",
       "price": 45,
-      "image": "images/ridgeline_tray1.PNG",
+      "image": "images/placeholder.png",
       "images": [
-        "images/ridgeline_tray1.PNG",
-        "images/ridgeline_tray2.PNG"
+        "images/placeholder.png",
+        "images/placeholder.png"
       ],
       "imageAlt": "3D printed Honda Ridgeline tray",
       "avatar": ""
@@ -50,12 +50,12 @@
       "category": "Kitchen Solution",
       "description": "Drainage tray designed for your sink. Keeps counters clean and dry with built-in drainage channels.",
       "price": 20,
-      "image": "images/sink1.jpeg",
+      "image": "images/placeholder.png",
       "images": [
-        "images/sink1.jpeg",
-        "images/sink2.jpeg",
-        "images/sink3.jpeg",
-        "images/sink4.jpeg"
+        "images/placeholder.png",
+        "images/placeholder.png",
+        "images/placeholder.png",
+        "images/placeholder.png"
       ],
       "imageAlt": "3D printed sink drip tray",
       "avatar": ""
@@ -66,12 +66,12 @@
       "category": "Gaming Setup",
       "description": "Wall-mounted holder keeps controllers organized and charged. Custom design fits any gaming setup perfectly.",
       "price": 25,
-      "image": "images/xbox1.jpeg",
+      "image": "images/placeholder.png",
       "images": [
-        "images/xbox1.jpeg",
-        "images/xbox2.jpeg",
-        "images/xbox3.jpeg",
-        "images/xbox4.jpeg"
+        "images/placeholder.png",
+        "images/placeholder.png",
+        "images/placeholder.png",
+        "images/placeholder.png"
       ],
       "imageAlt": "3D printed floating xbox controller holder",
       "avatar": ""

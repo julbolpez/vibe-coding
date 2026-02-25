@@ -26,6 +26,11 @@
             box-sizing: border-box;
         }
 
+        ::selection {
+            background: rgba(6, 182, 212, 0.3);
+            color: #ffffff;
+        }
+
         body {
             font-family: 'Work Sans', sans-serif;
             background: var(--dark);
@@ -223,8 +228,12 @@
         /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
-                gap: 16px;
+                gap: 20px;
                 font-size: 0.9rem;
+            }
+
+            .nav-links a {
+                padding: 8px 4px;
             }
 
             .page-title {
@@ -288,7 +297,7 @@
 
         <!-- Footer -->
         <footer>
-            <p>&copy; 2024 Bara 3D. All rights reserved.</p>
+            <p>&copy; 2026 Bara 3D. All rights reserved.</p>
         </footer>
     </div>
 </body>

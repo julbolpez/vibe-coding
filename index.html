@@ -30,6 +30,11 @@
             box-sizing: border-box;
         }
 
+        ::selection {
+            background: rgba(59, 130, 246, 0.3);
+            color: #ffffff;
+        }
+
         body {
             font-family: 'Work Sans', sans-serif;
             background: var(--dark);
@@ -393,8 +398,15 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, filter 0.3s ease;
         }
+
+        .thumbnail:nth-child(1) img { filter: hue-rotate(0deg); }
+        .thumbnail:nth-child(2) img { filter: hue-rotate(45deg); }
+        .thumbnail:nth-child(3) img { filter: hue-rotate(90deg); }
+        .thumbnail:nth-child(4) img { filter: hue-rotate(135deg); }
+        .thumbnail:nth-child(5) img { filter: hue-rotate(180deg); }
+        .thumbnail:nth-child(6) img { filter: hue-rotate(225deg); }
 
         .thumbnail:hover {
             border-color: var(--primary);
@@ -697,6 +709,39 @@
         .pricing-table-wrapper {
             overflow-x: auto;
             margin: 40px 0;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .pricing-table-wrapper::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .pricing-table-wrapper::-webkit-scrollbar-track {
+            background: var(--dark-card);
+            border-radius: 4px;
+        }
+
+        .pricing-table-wrapper::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        .pricing-table-wrapper::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-hover);
+        }
+
+        .pricing-scroll-hint {
+            display: none;
+            text-align: center;
+            color: var(--steel);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .pricing-scroll-hint {
+                display: block;
+            }
         }
 
         .pricing-table {
@@ -893,18 +938,50 @@
         }
 
         @media (max-width: 768px) {
+            .pricing-table-wrapper {
+                margin: 30px -24px;
+                padding: 0 16px;
+            }
+
+            .pricing-table {
+                min-width: 800px;
+            }
+
             .pricing-table th,
             .pricing-table td {
-                padding: 12px 8px;
-                font-size: 0.9rem;
+                padding: 16px 12px;
+                font-size: 1rem;
+                white-space: normal;
+            }
+
+            .pricing-table th {
+                font-size: 1rem;
+                padding: 18px 12px;
+                min-width: 140px;
             }
 
             .pricing-table .price {
-                font-size: 1.4rem;
+                font-size: 1.6rem;
+                margin-bottom: 6px;
+            }
+
+            .pricing-table .price-note {
+                font-size: 0.9rem;
             }
 
             .pricing-table td:first-child {
+                min-width: 180px;
+                font-size: 0.95rem;
+                padding-right: 16px;
+            }
+
+            .pricing-table td.clickable {
                 min-width: 120px;
+            }
+
+            .tier-details {
+                grid-template-columns: 1fr;
+                padding: 0 16px;
             }
         }
 
@@ -1184,8 +1261,12 @@
             }
 
             .nav-links {
-                gap: 12px;
-                font-size: 0.85rem;
+                gap: 20px;
+                font-size: 0.9rem;
+            }
+
+            .nav-links a {
+                padding: 8px 4px;
             }
 
             .nav-logo {
@@ -1319,8 +1400,10 @@
         <section id="pricing">
             <h2 class="section-title">Pricing</h2>
             <p style="text-align: center; max-width: 800px; margin: 0 auto 30px; color: var(--steel); font-size: 1.05rem;">
-                Our pricing varies based on the service type and complexity tier. <strong>Click any price below</strong> to generate a quote request message with your selection.
+                Our pricing varies based on the service type and complexity tier. <strong style="color: var(--primary);">Click any price below</strong> to generate a quote request message with your selection.
             </p>
+            
+            <div class="pricing-scroll-hint">👈 Scroll horizontally to view all tiers 👉</div>
             
             <div class="pricing-table-wrapper">
                 <table class="pricing-table">
@@ -1374,16 +1457,16 @@
                         </tr>
                         <tr>
                             <td>✏️ Custom Design Service<br><span style="font-size: 0.85rem; color: var(--steel); font-weight: 400;">Design + Print + Materials</span></td>
-                            <td class="clickable" data-service="Custom Design Service" data-tier="Basic" data-price="$75+">
-                                <div class="price">$75+</div>
+                            <td class="clickable" data-service="Custom Design Service" data-tier="Basic" data-price="$50+">
+                                <div class="price">$50+</div>
                                 <div class="price-note">Simple concepts</div>
                             </td>
-                            <td class="clickable" data-service="Custom Design Service" data-tier="Standard" data-price="$125+">
-                                <div class="price">$125+</div>
+                            <td class="clickable" data-service="Custom Design Service" data-tier="Standard" data-price="$100+">
+                                <div class="price">$100+</div>
                                 <div class="price-note">Most projects</div>
                             </td>
-                            <td class="clickable" data-service="Custom Design Service" data-tier="Premium" data-price="$200+">
-                                <div class="price">$200+</div>
+                            <td class="clickable" data-service="Custom Design Service" data-tier="Premium" data-price="$150+">
+                                <div class="price">$150+</div>
                                 <div class="price-note">Complex designs</div>
                             </td>
                             <td class="clickable" data-service="Custom Design Service" data-tier="Business" data-price="Custom">
@@ -1402,7 +1485,7 @@
                         <li>Single color prints</li>
                         <li>Standard materials (PLA/PETG)</li>
                         <li>Up to 100g filament</li>
-                        <li>3-7 business days</li>
+                        <li>1-3 days</li>
                         <li>Email support</li>
                     </ul>
                 </div>
@@ -1413,7 +1496,7 @@
                         <li>Multi-color capabilities</li>
                         <li>Multiple material options</li>
                         <li>Up to 250g filament</li>
-                        <li>2-4 business days</li>
+                        <li>2-5 days</li>
                         <li>Design consultation included</li>
                         <li>Priority email/text support</li>
                     </ul>
@@ -1521,7 +1604,7 @@
 
         <!-- Footer -->
         <footer>
-            <p>&copy; 2024 Bara 3D. All rights reserved.</p>
+            <p>&copy; 2026 Bara 3D. All rights reserved.</p>
         </footer>
     </div>
 
@@ -1646,13 +1729,17 @@
                 const productCard = document.createElement('div');
                 productCard.className = 'feed-post';
                 productCard.style.animationDelay = `${(index + 1) * 0.1}s`;
+                productCard.dataset.currentImageIndex = '0';
+                
+                // Store images array for later use
+                const images = product.images || [product.image];
+                productCard.dataset.images = JSON.stringify(images);
                 
                 // Generate thumbnails HTML
-                const images = product.images || [product.image];
                 const thumbnailsHTML = images.length > 1 ? `
                     <div class="image-thumbnails">
                         ${images.map((img, idx) => `
-                            <div class="thumbnail ${idx === 0 ? 'active' : ''}" onclick='openGallery(${JSON.stringify(images)}, ${idx})'>
+                            <div class="thumbnail ${idx === 0 ? 'active' : ''}" data-index="${idx}">
                                 <img src="${img}" alt="${product.title}">
                             </div>
                         `).join('')}
@@ -1666,8 +1753,8 @@
                             <p>${product.category}</p>
                         </div>
                     </div>
-                    <div class="post-image" onclick='openGallery(${JSON.stringify(images)}, 0)'>
-                        <img src="${product.image}" alt="${product.imageAlt}" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="post-image">
+                        <img src="${product.image}" alt="${product.imageAlt}" style="width: 100%; height: 100%; object-fit: cover; filter: hue-rotate(0deg);">
                     </div>
                     ${thumbnailsHTML}
                     <div class="post-actions">
@@ -1683,6 +1770,43 @@
                 `;
                 
                 productFeed.appendChild(productCard);
+                
+                // Add event listeners after the card is added to DOM
+                const postImage = productCard.querySelector('.post-image');
+                postImage.addEventListener('click', function() {
+                    const images = JSON.parse(productCard.dataset.images);
+                    const currentIndex = parseInt(productCard.dataset.currentImageIndex);
+                    openGallery(images, currentIndex);
+                });
+                
+                // Add thumbnail click handlers
+                const thumbnails = productCard.querySelectorAll('.thumbnail');
+                thumbnails.forEach((thumbnail, idx) => {
+                    thumbnail.addEventListener('click', function(e) {
+                        e.stopPropagation(); // Prevent triggering parent click
+                        const images = JSON.parse(productCard.dataset.images);
+                        const currentIndex = parseInt(productCard.dataset.currentImageIndex);
+                        
+                        if (this.classList.contains('active')) {
+                            // Already selected - open gallery
+                            openGallery(images, idx);
+                        } else {
+                            // Switch main image
+                            const mainImg = postImage.querySelector('img');
+                            mainImg.src = images[idx];
+                            productCard.dataset.currentImageIndex = idx.toString();
+                            
+                            // Apply hue-rotate to main image to match thumbnail
+                            const hueRotations = [0, 45, 90, 135, 180, 225];
+                            mainImg.style.filter = `hue-rotate(${hueRotations[idx] || 0}deg)`;
+                            
+                            // Update active thumbnail
+                            thumbnails.forEach((thumb, thumbIdx) => {
+                                thumb.classList.toggle('active', thumbIdx === idx);
+                            });
+                        }
+                    });
+                });
             });
             
             // Initialize copy button listeners after products are loaded
@@ -1718,6 +1842,10 @@
             const counter = document.getElementById('galleryCounter');
             imgElement.src = currentGalleryImages[currentImageIndex];
             counter.textContent = `${currentImageIndex + 1} / ${currentGalleryImages.length}`;
+            
+            // Apply hue-rotate filter to match the thumbnail color
+            const hueRotations = [0, 45, 90, 135, 180, 225];
+            imgElement.style.filter = `hue-rotate(${hueRotations[currentImageIndex] || 0}deg)`;
         }
 
         // Close gallery on Escape key and arrow navigation

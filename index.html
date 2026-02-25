@@ -694,6 +694,220 @@
             background: var(--primary-hover);
         }
 
+        .pricing-table-wrapper {
+            overflow-x: auto;
+            margin: 40px 0;
+        }
+
+        .pricing-table {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+        }
+
+        .pricing-table th {
+            background: var(--dark);
+            color: var(--text);
+            padding: 20px 16px;
+            font-weight: 700;
+            text-align: center;
+            border: 1px solid var(--border);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pricing-table td.clickable {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-table td.clickable:hover {
+            background: var(--primary);
+        }
+
+        .pricing-table td.clickable:hover .price,
+        .pricing-table td.clickable:hover .price-note {
+            color: white;
+        }
+
+        .pricing-table td {
+            padding: 20px 16px;
+            border: 1px solid var(--border);
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .pricing-table td:first-child {
+            text-align: left;
+            font-weight: 600;
+            color: var(--text);
+            background: var(--dark);
+        }
+
+        .pricing-table .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .pricing-table .price-note {
+            font-size: 0.85rem;
+            color: var(--steel);
+        }
+
+        .tier-details {
+            max-width: 1200px;
+            margin: 50px auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .tier-detail-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: 8px;
+        }
+
+        .tier-detail-card.featured {
+            border-color: var(--primary);
+            border-width: 2px;
+        }
+
+        .message-template {
+            background: var(--dark);
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px auto;
+            max-width: 700px;
+            display: none;
+        }
+
+        .message-template.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message-template h3 {
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .message-template textarea {
+            width: 100%;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 16px;
+            border-radius: 4px;
+            font-size: 1.05rem;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 280px;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .message-template-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .template-btn {
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .template-btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .template-btn.secondary {
+            background: var(--dark);
+            border: 1px solid var(--border);
+        }
+
+        .template-btn.secondary:hover {
+            background: var(--card-bg);
+        }
+
+        .tier-detail-card h3 {
+            color: var(--text);
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tier-detail-card.featured h3 {
+            color: var(--primary);
+        }
+
+        .tier-detail-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tier-detail-card li {
+            padding: 8px 0;
+            color: var(--steel);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .tier-detail-card li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .pricing-table th,
+            .pricing-table td {
+                padding: 12px 8px;
+                font-size: 0.9rem;
+            }
+
+            .pricing-table .price {
+                font-size: 1.4rem;
+            }
+
+            .pricing-table td:first-child {
+                min-width: 120px;
+            }
+        }
+
         .pricing-disclaimer {
             max-width: 900px;
             margin: 40px auto 0;
@@ -823,6 +1037,7 @@
             max-height: 80vh;
             object-fit: contain;
             border: 3px solid var(--primary);
+            cursor: pointer;
         }
 
         .gallery-close {
@@ -1072,7 +1287,7 @@
         <section id="services">
             <h2 class="section-title">Our Services</h2>
             <div class="services-grid">
-                <a href="#contact" class="service-card" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+                <a href="#pricing" class="service-card" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
                     <h3><span class="service-icon">🖨️</span> Print Your Models</h3>
                     <p>Have an STL file ready? We'll bring it to life with our professional-grade 3D printer. Just send us your file and we'll handle the rest.</p>
                     <p><strong>Perfect for:</strong> Makers, hobbyists, and anyone with a design ready to print</p>
@@ -1103,89 +1318,136 @@
         <!-- Pricing Section -->
         <section id="pricing">
             <h2 class="section-title">Pricing</h2>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3 class="pricing-title">Basic</h3>
-                        <p class="pricing-subtitle">Basic Tier</p>
-                    </div>
-                    <div class="pricing-price">
-                        <div class="price-amount">$15</div>
-                        <div class="price-period">starting price</div>
-                    </div>
-                    <ul class="pricing-features">
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 30px; color: var(--steel); font-size: 1.05rem;">
+                Our pricing varies based on the service type and complexity tier. <strong>Click any price below</strong> to generate a quote request message with your selection.
+            </p>
+            
+            <div class="pricing-table-wrapper">
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Service Type</th>
+                            <th>Basic</th>
+                            <th>Standard</th>
+                            <th>Premium</th>
+                            <th>Business</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🖨️ Print Your Models<br><span style="font-size: 0.85rem; color: var(--steel); font-weight: 400;">Filament + Print Time</span></td>
+                            <td class="clickable" data-service="Print Your Models" data-tier="Basic" data-price="$15+">
+                                <div class="price">$15+</div>
+                                <div class="price-note">Simple prints</div>
+                            </td>
+                            <td class="clickable" data-service="Print Your Models" data-tier="Standard" data-price="$30+">
+                                <div class="price">$30+</div>
+                                <div class="price-note">Multi-color/material</div>
+                            </td>
+                            <td class="clickable" data-service="Print Your Models" data-tier="Premium" data-price="$50+">
+                                <div class="price">$50+</div>
+                                <div class="price-note">Complex prints</div>
+                            </td>
+                            <td class="clickable" data-service="Print Your Models" data-tier="Business" data-price="Custom">
+                                <div class="price">Custom</div>
+                                <div class="price-note">Volume pricing</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>🎨 Our Designs<br><span style="font-size: 0.85rem; color: var(--steel); font-weight: 400;">Pre-designed items</span></td>
+                            <td class="clickable" data-service="Our Designs" data-tier="Basic" data-price="$20+">
+                                <div class="price">$20+</div>
+                                <div class="price-note">As-designed</div>
+                            </td>
+                            <td class="clickable" data-service="Our Designs" data-tier="Standard" data-price="$35+">
+                                <div class="price">$35+</div>
+                                <div class="price-note">Minor mods</div>
+                            </td>
+                            <td class="clickable" data-service="Our Designs" data-tier="Premium" data-price="$60+">
+                                <div class="price">$60+</div>
+                                <div class="price-note">Custom variations</div>
+                            </td>
+                            <td class="clickable" data-service="Our Designs" data-tier="Business" data-price="Custom">
+                                <div class="price">Custom</div>
+                                <div class="price-note">Bulk orders</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>✏️ Custom Design Service<br><span style="font-size: 0.85rem; color: var(--steel); font-weight: 400;">Design + Print + Materials</span></td>
+                            <td class="clickable" data-service="Custom Design Service" data-tier="Basic" data-price="$75+">
+                                <div class="price">$75+</div>
+                                <div class="price-note">Simple concepts</div>
+                            </td>
+                            <td class="clickable" data-service="Custom Design Service" data-tier="Standard" data-price="$125+">
+                                <div class="price">$125+</div>
+                                <div class="price-note">Most projects</div>
+                            </td>
+                            <td class="clickable" data-service="Custom Design Service" data-tier="Premium" data-price="$200+">
+                                <div class="price">$200+</div>
+                                <div class="price-note">Complex designs</div>
+                            </td>
+                            <td class="clickable" data-service="Custom Design Service" data-tier="Business" data-price="Custom">
+                                <div class="price">Custom</div>
+                                <div class="price-note">Production runs</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tier-details">
+                <div class="tier-detail-card">
+                    <h3>Basic</h3>
+                    <ul>
                         <li>Single color prints</li>
-                        <li>Single material</li>
+                        <li>Standard materials (PLA/PETG)</li>
                         <li>Up to 100g filament</li>
-                        <li>3-7 business days completion</li>
+                        <li>3-7 business days</li>
+                        <li>Email support</li>
                     </ul>
-                    <a href="#contact" class="pricing-cta">Get Started</a>
                 </div>
 
-                <div class="pricing-card featured">
-                    <div class="pricing-header">
-                        <h3 class="pricing-title">Standard</h3>
-                        <p class="pricing-subtitle">Most Popular</p>
-                    </div>
-                    <div class="pricing-price">
-                        <div class="price-amount">$35</div>
-                        <div class="price-period">starting price</div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>Everything in Basic, plus:</li>
-                        <li>Multiple material options</li>
+                <div class="tier-detail-card">
+                    <h3>Standard</h3>
+                    <ul>
                         <li>Multi-color capabilities</li>
+                        <li>Multiple material options</li>
                         <li>Up to 250g filament</li>
-                        <li>2-4 business days completion</li>
+                        <li>2-4 business days</li>
                         <li>Design consultation included</li>
+                        <li>Priority email/text support</li>
                     </ul>
-                    <a href="#contact" class="pricing-cta">Get Started</a>
                 </div>
 
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3 class="pricing-title">Premium</h3>
-                        <p class="pricing-subtitle">Custom Projects</p>
-                    </div>
-                    <div class="pricing-price">
-                        <div class="price-amount">$75+</div>
-                        <div class="price-period">custom quote</div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>Everything in Standard, plus:</li>
-                        <li>Any material available</li>
-                        <li>Unlimited filament usage</li>
-                        <li>Priority 1-2 day rush queue</li>
-                        <li>Full design service with consultation</li>
-                        <li>Includes dedicated Zoom session</li>
-                        <li>Comprehensive project support</li>
+                <div class="tier-detail-card">
+                    <h3>Premium</h3>
+                    <ul>
+                        <li>Any color combination</li>
+                        <li>All materials available</li>
+                        <li>Unlimited filament</li>
+                        <li>Rush service available</li>
+                        <li>Full design service</li>
+                        <li>Dedicated Zoom consultation</li>
+                        <li>Phone/text priority support</li>
                     </ul>
-                    <a href="#contact" class="pricing-cta">Get Started</a>
                 </div>
 
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3 class="pricing-title">Business</h3>
-                        <p class="pricing-subtitle">Bulk Orders</p>
-                    </div>
-                    <div class="pricing-price">
-                        <div class="price-amount">Custom</div>
-                        <div class="price-period">volume pricing</div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>Large quantity discounts</li>
-                        <li>Dedicated production scheduling</li>
+                <div class="tier-detail-card">
+                    <h3>Business</h3>
+                    <ul>
+                        <li>Volume discounts</li>
+                        <li>Custom materials/colors</li>
+                        <li>Flexible production scheduling</li>
                         <li>Custom branding options</li>
-                        <li>Flexible delivery timelines</li>
-                        <li>Account management support</li>
-                        <li>Recurring order options</li>
-                        <li>Invoicing available</li>
+                        <li>Dedicated account manager</li>
+                        <li>Invoice billing available</li>
+                        <li>Recurring order setup</li>
                     </ul>
-                    <a href="#contact" class="pricing-cta">Get Quote</a>
                 </div>
             </div>
+
             <div class="pricing-disclaimer">
-                <strong>Note:</strong> Completion times and prices are subject to change based on design complexity, print time, materials used, and additional services such as on-site measurements or special material procurement. All prices are subject to negotiation.
+                <strong>Note:</strong> All prices are starting estimates. Final pricing depends on design complexity, print time, materials, and quantity. Volume discounts available for multiple items. Contact us for a personalized quote!
             </div>
         </section>
 
@@ -1214,8 +1476,19 @@
                 Ready to bring your ideas to life? Contact us today for a free quote!
             </p>
             <p class="contact-message" style="margin-top: 10px; font-size: 0.95rem;">
-                <strong>Same day response guaranteed!</strong> Call, text, or email us - we're here to help.
+                <strong style="color: #3b82f6; font-weight: 700;">Same day response guaranteed!</strong> Call, text, or email us - we're here to help.
             </p>
+            
+            <div class="message-template" id="messageTemplate">
+                <h3>📋 Your Quote Request</h3>
+                <p style="color: var(--steel); font-size: 0.9rem; margin-bottom: 10px;">Edit the message below with your project details, then copy and send it to us!</p>
+                <textarea id="quoteMessage" placeholder="Your customized quote request will appear here..."></textarea>
+                <div class="message-template-actions">
+                    <button class="template-btn" onclick="copyQuoteMessage()">Copy Message</button>
+                    <button class="template-btn secondary" onclick="clearQuoteMessage()">Clear</button>
+                </div>
+            </div>
+            
             <div class="contact-info">
                 <div class="contact-btn copy-btn" data-copy="+19057156464" data-type="Phone">
                     <span>📞</span>
@@ -1447,7 +1720,7 @@
             counter.textContent = `${currentImageIndex + 1} / ${currentGalleryImages.length}`;
         }
 
-        // Close gallery on Escape key
+        // Close gallery on Escape key and arrow navigation
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeGallery();
@@ -1455,6 +1728,56 @@
                 changeImage(-1);
             } else if (e.key === 'ArrowRight') {
                 changeImage(1);
+            }
+        });
+
+        // Touch/Swipe support for gallery
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const galleryModal = document.getElementById('galleryModal');
+
+        galleryModal.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+
+        galleryModal.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            const swipeThreshold = 50; // Minimum distance for a swipe
+            const difference = touchStartX - touchEndX;
+
+            if (Math.abs(difference) > swipeThreshold) {
+                if (difference > 0) {
+                    // Swiped left - show next image
+                    changeImage(1);
+                } else {
+                    // Swiped right - show previous image
+                    changeImage(-1);
+                }
+            }
+        }
+
+        // Click on image to navigate
+        document.getElementById('galleryImage').addEventListener('click', function(e) {
+            const imageWidth = this.offsetWidth;
+            const clickX = e.offsetX;
+            
+            // Click on left half = previous, right half = next
+            if (clickX < imageWidth / 2) {
+                changeImage(-1);
+            } else {
+                changeImage(1);
+            }
+        });
+
+        // Click outside image to close gallery
+        galleryModal.addEventListener('click', function(e) {
+            // Close if clicking on the modal backdrop or gallery content area (not on image/controls)
+            if (e.target === galleryModal || e.target.classList.contains('gallery-content')) {
+                closeGallery();
             }
         });
 
@@ -1483,8 +1806,61 @@
             });
         }
 
+        // Pricing table interaction
+        function selectPricingOption(service, tier, price) {
+            const message = `Hi! I'm interested in getting a quote for:\n\nService: ${service}\nTier: ${tier}\nStarting Price: ${price}\n\nProject Details:\n[Please describe your project here - dimensions, materials, colors, quantity, timeline, etc.]\n\nThank you!`;
+            
+            const messageBox = document.getElementById('quoteMessage');
+            const templateBox = document.getElementById('messageTemplate');
+            
+            messageBox.value = message;
+            templateBox.classList.add('active');
+            
+            // Scroll to contact section
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function copyQuoteMessage() {
+            const messageBox = document.getElementById('quoteMessage');
+            navigator.clipboard.writeText(messageBox.value).then(() => {
+                // Show notification
+                const notification = document.getElementById('copiedNotification');
+                notification.textContent = 'Quote Message Copied!';
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+            });
+        }
+
+        function clearQuoteMessage() {
+            const messageBox = document.getElementById('quoteMessage');
+            const templateBox = document.getElementById('messageTemplate');
+            
+            messageBox.value = '';
+            templateBox.classList.remove('active');
+        }
+
+        // Initialize pricing table click handlers
+        function initPricingTable() {
+            document.querySelectorAll('.pricing-table td.clickable').forEach(cell => {
+                cell.addEventListener('click', function() {
+                    const service = this.getAttribute('data-service');
+                    const tier = this.getAttribute('data-tier');
+                    const price = this.getAttribute('data-price');
+                    selectPricingOption(service, tier, price);
+                });
+            });
+        }
+
         // Load products when page loads
-        document.addEventListener('DOMContentLoaded', loadProducts);
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProducts();
+            initPricingTable();
+        });
     </script>
 </body>
 </html>

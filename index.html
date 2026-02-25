@@ -958,6 +958,16 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            nav {
+                padding: 16px 20px;
+            }
+
+            .nav-content {
+                flex-direction: column;
+                gap: 16px;
+                align-items: center;
+            }
+
             .nav-links {
                 gap: 12px;
                 font-size: 0.85rem;
@@ -1388,7 +1398,7 @@
                     </div>
                     ${thumbnailsHTML}
                     <div class="post-actions">
-                        <div class="action-btn copy-btn" data-copy="${data.contact.phone}" data-type="Phone" title="Call us">📞</div>
+                        <a href="tel:${data.contact.phone}" class="action-btn" title="Call us">📞</a>
                         <div class="action-btn copy-btn" data-copy="${data.contact.whatsapp}" data-type="WhatsApp" title="WhatsApp">💬</div>
                         <div class="action-btn copy-btn" data-copy="${data.contact.email}" data-type="Email" title="Email">✉️</div>
                     </div>

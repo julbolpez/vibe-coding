@@ -113,10 +113,22 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
+            position: relative;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover,
+        .nav-links a.active {
             color: var(--primary);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
         }
 
 
@@ -294,7 +306,6 @@
 
         .feed-post:hover .post-image {
             font-size: 5.5rem;
-            filter: brightness(1.2);
         }
 
         .post-actions {
@@ -368,6 +379,66 @@
             border-top: 1px solid var(--border);
         }
 
+        .purchase-section {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quantity-selector label {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .quantity-input {
+            width: 70px;
+            padding: 8px 12px;
+            background: var(--dark);
+            border: 1px solid var(--border);
+            color: var(--text);
+            border-radius: 4px;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .quantity-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .purchase-btn {
+            flex: 1;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .purchase-btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        .purchase-btn:active {
+            transform: translateY(0);
+        }
+
         .post-tags {
             margin-top: 10px;
             font-size: 0.85rem;
@@ -413,10 +484,6 @@
             border-color: var(--primary);
             transform: translateY(-2px);
             box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
-        }
-
-        .thumbnail:hover img {
-            transform: scale(1.1);
         }
 
         .thumbnail.active {
@@ -1189,10 +1256,6 @@
             cursor: pointer;
         }
 
-        .post-image:hover {
-            opacity: 0.9;
-        }
-
         /* Footer */
         footer {
             text-align: center;
@@ -1268,6 +1331,11 @@
 
             .nav-links a {
                 padding: 8px 4px;
+                position: relative;
+            }
+
+            .nav-links a.active::after {
+                bottom: 0;
             }
 
             .nav-logo {
@@ -1439,16 +1507,16 @@
                         </tr>
                         <tr>
                             <td>🎨 Our Designs<br><span style="font-size: 0.85rem; color: var(--steel); font-weight: 400;">Pre-designed items</span></td>
-                            <td class="clickable" data-service="Our Designs" data-tier="Basic" data-price="$20+">
-                                <div class="price">$20+</div>
-                                <div class="price-note">As-designed</div>
+                            <td class="clickable" data-service="Our Designs" data-tier="Basic" data-price="See Above">
+                                <div class="price">See Above</div>
+                                <div class="price-note">Prices listed above</div>
                             </td>
-                            <td class="clickable" data-service="Our Designs" data-tier="Standard" data-price="$35+">
-                                <div class="price">$35+</div>
-                                <div class="price-note">Minor mods</div>
+                            <td class="clickable" data-service="Our Designs" data-tier="Standard" data-price="Price + Mods">
+                                <div class="price">Price + Mods</div>
+                                <div class="price-note">Minor modifications</div>
                             </td>
-                            <td class="clickable" data-service="Our Designs" data-tier="Premium" data-price="$60+">
-                                <div class="price">$60+</div>
+                            <td class="clickable" data-service="Our Designs" data-tier="Premium" data-price="$50+">
+                                <div class="price">$50+</div>
                                 <div class="price-note">Custom variations</div>
                             </td>
                             <td class="clickable" data-service="Our Designs" data-tier="Business" data-price="Custom">
@@ -1531,7 +1599,7 @@
             </div>
 
             <div class="pricing-disclaimer">
-                <strong>Note:</strong> All prices are starting estimates. Final pricing depends on design complexity, print time, materials, and quantity. Volume discounts available for multiple items. Contact us for a personalized quote!
+                <strong>Note:</strong> All prices are starting estimates. Final pricing depends on design complexity, print time, materials, quantity, and any additional services. Volume discounts available for multiple items. Prices may vary for installation fees, assembly, or post-processing services (sanding, painting, finishing). Contact us for a personalized quote!
             </div>
         </section>
 
@@ -1767,10 +1835,48 @@
                         <p class="post-title">${product.title}</p>
                         <p class="post-description">${product.description}</p>
                         <p class="post-price">$${product.price}</p>
+                        <div class="purchase-section">
+                            <div class="quantity-selector">
+                                <label>Qty:</label>
+                                <input type="number" class="quantity-input" min="1" value="1" data-product-title="${product.title}" data-product-price="${product.price}">
+                            </div>
+                            <button class="purchase-btn">Purchase</button>
+                        </div>
                     </div>
                 `;
                 
                 productFeed.appendChild(productCard);
+                
+                // Add purchase button event listener
+                const purchaseBtn = productCard.querySelector('.purchase-btn');
+                const quantityInput = productCard.querySelector('.quantity-input');
+                purchaseBtn.addEventListener('click', function() {
+                    const quantity = quantityInput.value;
+                    const productTitle = quantityInput.dataset.productTitle;
+                    const productPrice = quantityInput.dataset.productPrice;
+                    const totalPrice = (parseFloat(productPrice) * parseInt(quantity)).toFixed(2);
+                    
+                    const message = `Hi! I'd like to purchase:
+
+Product: ${productTitle}
+Quantity: ${quantity}
+Price per unit: $${productPrice}
+Total: $${totalPrice}
+
+Modifications/Customizations:
+[Describe any modifications you'd like - colors, size adjustments, etc. Leave blank if ordering as-designed]
+
+Please let me know the next steps. Thank you!`;
+                    
+                    const messageBox = document.getElementById('quoteMessage');
+                    const templateBox = document.getElementById('messageTemplate');
+                    
+                    messageBox.value = message;
+                    templateBox.classList.add('active');
+                    
+                    // Scroll to contact section
+                    document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
                 
                 // Add event listeners after the card is added to DOM
                 const postImage = productCard.querySelector('.post-image');
@@ -1937,7 +2043,18 @@
 
         // Pricing table interaction
         function selectPricingOption(service, tier, price) {
-            const message = `Hi! I'm interested in getting a quote for:\n\nService: ${service}\nTier: ${tier}\nStarting Price: ${price}\n\nProject Details:\n[Please describe your project here - dimensions, materials, colors, quantity, timeline, etc.]\n\nThank you!`;
+            // If Our Designs is clicked, scroll to products section
+            if (service === 'Our Designs') {
+                document.getElementById('products').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                return;
+            }
+            
+            let message;
+            if (service === 'Print Your Models') {
+                message = `Hi! I'm interested in getting a quote for:\n\nService: ${service}\nTier: ${tier}\nStarting Price: ${price}\n\nModel Link:\n[Paste link to your STL/3D model file - Thingiverse, Printables, Google Drive, etc.]\n\nProject Details:\n[Please describe your project here - materials, colors, quantity, timeline, etc.]\n\nThank you!`;
+            } else {
+                message = `Hi! I'm interested in getting a quote for:\n\nService: ${service}\nTier: ${tier}\nStarting Price: ${price}\n\nProject Details:\n[Please describe your project here - dimensions, materials, colors, quantity, timeline, etc.]\n\nThank you!`;
+            }
             
             const messageBox = document.getElementById('quoteMessage');
             const templateBox = document.getElementById('messageTemplate');
@@ -1989,7 +2106,51 @@
         document.addEventListener('DOMContentLoaded', function() {
             loadProducts();
             initPricingTable();
+            initScrollSpy();
         });
+
+        // Scroll spy for navigation highlighting
+        function initScrollSpy() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+
+            function updateActiveNav() {
+                let currentSection = '';
+                const scrollPosition = window.scrollY + 100; // Offset for early activation
+                const windowHeight = window.innerHeight;
+                const documentHeight = document.documentElement.scrollHeight;
+
+                // Check if we're at the bottom of the page (for contact section)
+                if (windowHeight + window.scrollY >= documentHeight - 50) {
+                    // At bottom - highlight the last section (contact)
+                    const lastSection = Array.from(sections).pop();
+                    if (lastSection) {
+                        currentSection = lastSection.getAttribute('id');
+                    }
+                } else {
+                    sections.forEach(section => {
+                        const sectionTop = section.offsetTop;
+                        const sectionHeight = section.offsetHeight;
+
+                        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                            currentSection = section.getAttribute('id');
+                        }
+                    });
+                }
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // Update on scroll
+            window.addEventListener('scroll', updateActiveNav);
+            // Initial update
+            updateActiveNav();
+        }
     </script>
 </body>
 </html>

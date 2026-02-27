@@ -470,15 +470,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease, filter 0.3s ease;
+            transition: transform 0.3s ease;
         }
-
-        .thumbnail:nth-child(1) img { filter: hue-rotate(0deg); }
-        .thumbnail:nth-child(2) img { filter: hue-rotate(45deg); }
-        .thumbnail:nth-child(3) img { filter: hue-rotate(90deg); }
-        .thumbnail:nth-child(4) img { filter: hue-rotate(135deg); }
-        .thumbnail:nth-child(5) img { filter: hue-rotate(180deg); }
-        .thumbnail:nth-child(6) img { filter: hue-rotate(225deg); }
 
         .thumbnail:hover {
             border-color: var(--primary);
@@ -611,6 +604,123 @@
         .service-link:hover {
             gap: 12px;
             color: var(--accent);
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .portfolio-item {
+            background: var(--dark-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--primary);
+        }
+
+        .portfolio-item .post-image {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            background: linear-gradient(135deg, #25282e 0%, #374151 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .portfolio-item .post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .portfolio-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--primary);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 1;
+        }
+
+        .portfolio-badge.remix {
+            background: var(--accent);
+        }
+
+        .portfolio-item .thumbnails {
+            padding: 12px 24px 0;
+        }
+
+        .portfolio-item .image-thumbnails {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+
+        .portfolio-content {
+            padding: 24px;
+        }
+
+        .portfolio-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .portfolio-description {
+            color: var(--steel);
+            line-height: 1.7;
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .portfolio-tag {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(59, 130, 246, 0.2);
         }
 
         /* Pricing Section */
@@ -1417,6 +1527,7 @@
                 <a href="#" class="nav-logo">א BARA 3D</a>
                 <ul class="nav-links">
                     <li><a href="#products">Products</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#pricing">Pricing</a></li>
                     <li><a href="#about">About</a></li>
@@ -1430,6 +1541,47 @@
             <h2 class="section-title">Featured Products</h2>
             <div class="feed" id="productFeed">
                 <!-- Products will be loaded dynamically from products.json -->
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio">
+            <h2 class="section-title">Portfolio</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; color: var(--steel); font-size: 1.05rem;">
+                Explore projects created for clients. Each project showcases our versatility and attention to detail.
+            </p>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="post-image">
+                        <img src="images/portfolio/medicine_cabinet1.jpeg" alt="Client Project">
+                        <div class="portfolio-badge">Client Work</div>
+                    </div>
+                    <div class="thumbnails"></div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Medicine Cabinet Organizer</h3>
+                        <p class="portfolio-description">Custom drawer dividers designed to fit client's cabinet. Keeps medications and vitamins neatly organized with precise measurements.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Client Project</span>
+                            <span class="portfolio-tag">Organization</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="post-image">
+                        <img src="images/portfolio/ridgeline_tray1.jpeg" alt="Client Project">
+                        <div class="portfolio-badge">Client Work</div>
+                    </div>
+                    <div class="thumbnails"></div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Honda Ridgeline Tray</h3>
+                        <p class="portfolio-description">Custom-fit storage tray designed specifically for client's Honda Ridgeline. Keeps truck bed organized and items secure.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Client Project</span>
+                            <span class="portfolio-tag">Vehicle</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1687,42 +1839,24 @@
                     "category": "Drinkware Accessory",
                     "description": "Custom 3D printed replacement cap designed to fit Stanley-size bottles. Durable and leak-resistant design.",
                     "price": 15,
-                    "image": "images/placeholder.png",
+                    "image": "images/products/bottle.jpeg",
                     "images": [
-                        "images/placeholder.png",
-                        "images/placeholder.png",
-                        "images/placeholder.png",
-                        "images/placeholder.png"
+                        "images/products/bottle.jpeg"
                     ],
                     "imageAlt": "3D printed water bottle cap",
                     "avatar": ""
                 },
                 {
-                    "id": "medicine-cabinet-organizer",
-                    "title": "Medicine Cabinet Organizer",
-                    "category": "Home Organization",
-                    "description": "Custom drawer dividers designed to fit your cabinet. Keep medications and vitamins neatly organized.",
-                    "price": 30,
-                    "image": "images/placeholder.png",
+                    "id": "utility-clip",
+                    "title": "Utility Clip",
+                    "category": "Organization",
+                    "description": "Versatile clip for organizing cables, tools, or accessories. Secure grip and durable design for everyday use.",
+                    "price": 8,
+                    "image": "images/products/clip.jpeg",
                     "images": [
-                        "images/placeholder.png",
-                        "images/placeholder.png"
+                        "images/products/clip.jpeg"
                     ],
-                    "imageAlt": "3D printed medicine cabinet organizer",
-                    "avatar": ""
-                },
-                {
-                    "id": "honda-ridgeline-tray",
-                    "title": "Honda Ridgeline Tray",
-                    "category": "Vehicle Organization",
-                    "description": "Custom-fit storage tray designed specifically for Honda Ridgeline. Keeps your truck bed organized and items secure.",
-                    "price": 45,
-                    "image": "images/placeholder.png",
-                    "images": [
-                        "images/placeholder.png",
-                        "images/placeholder.png"
-                    ],
-                    "imageAlt": "3D printed Honda Ridgeline tray",
+                    "imageAlt": "3D printed utility clip",
                     "avatar": ""
                 },
                 {
@@ -1731,12 +1865,9 @@
                     "category": "Kitchen Solution",
                     "description": "Drainage tray designed for your sink. Keeps counters clean and dry with built-in drainage channels.",
                     "price": 20,
-                    "image": "images/placeholder.png",
+                    "image": "images/products/sink_driptray.jpeg",
                     "images": [
-                        "images/placeholder.png",
-                        "images/placeholder.png",
-                        "images/placeholder.png",
-                        "images/placeholder.png"
+                        "images/products/sink_driptray.jpeg"
                     ],
                     "imageAlt": "3D printed sink drip tray",
                     "avatar": ""
@@ -1747,12 +1878,9 @@
                     "category": "Gaming Setup",
                     "description": "Wall-mounted holder keeps controllers organized and charged. Custom design fits any gaming setup perfectly.",
                     "price": 25,
-                    "image": "images/placeholder.png",
+                    "image": "images/products/xbox_holder.jpeg",
                     "images": [
-                        "images/placeholder.png",
-                        "images/placeholder.png",
-                        "images/placeholder.png",
-                        "images/placeholder.png"
+                        "images/products/xbox_holder.jpeg"
                     ],
                     "imageAlt": "3D printed floating xbox controller holder",
                     "avatar": ""
@@ -1769,6 +1897,81 @@
         // Gallery state
         let currentGalleryImages = [];
         let currentImageIndex = 0;
+
+        // Load portfolio items with gallery functionality
+        function loadPortfolio() {
+            const portfolioItems = [
+                {
+                    title: "Medicine Cabinet Organizer",
+                    images: [
+                        "images/portfolio/medicine_cabinet1.jpeg",
+                        "images/portfolio/medicine_cabinet2.jpeg"
+                    ]
+                },
+                {
+                    title: "Honda Ridgeline Tray",
+                    images: [
+                        "images/portfolio/ridgeline_tray1.jpeg",
+                        "images/portfolio/ridgeline_tray2.jpeg"
+                    ]
+                }
+            ];
+
+            const portfolioCards = document.querySelectorAll('.portfolio-item');
+            
+            portfolioCards.forEach((card, index) => {
+                const item = portfolioItems[index];
+                if (!item) return;
+                
+                const postImage = card.querySelector('.post-image');
+                const thumbnailsContainer = card.querySelector('.thumbnails');
+                
+                // Store images array
+                card.dataset.images = JSON.stringify(item.images);
+                card.dataset.currentImageIndex = '0';
+                
+                // Generate thumbnails
+                if (item.images.length > 1) {
+                    thumbnailsContainer.innerHTML = `
+                        <div class="image-thumbnails">
+                            ${item.images.map((img, idx) => `
+                                <div class="thumbnail ${idx === 0 ? 'active' : ''}" data-index="${idx}">
+                                    <img src="${img}" alt="${item.title}">
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                }
+                
+                // Add click handler for main image
+                postImage.addEventListener('click', function() {
+                    const images = JSON.parse(card.dataset.images);
+                    const currentIndex = parseInt(card.dataset.currentImageIndex);
+                    openGallery(images, currentIndex);
+                });
+                
+                // Add thumbnail click handlers
+                const thumbnails = card.querySelectorAll('.thumbnail');
+                thumbnails.forEach((thumbnail, idx) => {
+                    thumbnail.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const images = JSON.parse(card.dataset.images);
+                        
+                        if (this.classList.contains('active')) {
+                            openGallery(images, idx);
+                        } else {
+                            const mainImg = postImage.querySelector('img');
+                            mainImg.src = images[idx];
+                            card.dataset.currentImageIndex = idx.toString();
+                            
+                            thumbnails.forEach((thumb, thumbIdx) => {
+                                thumb.classList.toggle('active', thumbIdx === idx);
+                            });
+                        }
+                    });
+                });
+            });
+        }
 
         // Load products from JSON file with fallback
         async function loadProducts() {
@@ -1903,10 +2106,6 @@ Please let me know the next steps. Thank you!`;
                             mainImg.src = images[idx];
                             productCard.dataset.currentImageIndex = idx.toString();
                             
-                            // Apply hue-rotate to main image to match thumbnail
-                            const hueRotations = [0, 45, 90, 135, 180, 225];
-                            mainImg.style.filter = `hue-rotate(${hueRotations[idx] || 0}deg)`;
-                            
                             // Update active thumbnail
                             thumbnails.forEach((thumb, thumbIdx) => {
                                 thumb.classList.toggle('active', thumbIdx === idx);
@@ -1949,10 +2148,6 @@ Please let me know the next steps. Thank you!`;
             const counter = document.getElementById('galleryCounter');
             imgElement.src = currentGalleryImages[currentImageIndex];
             counter.textContent = `${currentImageIndex + 1} / ${currentGalleryImages.length}`;
-            
-            // Apply hue-rotate filter to match the thumbnail color
-            const hueRotations = [0, 45, 90, 135, 180, 225];
-            imgElement.style.filter = `hue-rotate(${hueRotations[currentImageIndex] || 0}deg)`;
         }
 
         // Close gallery on Escape key and arrow navigation
@@ -2105,6 +2300,7 @@ Please let me know the next steps. Thank you!`;
         // Load products when page loads
         document.addEventListener('DOMContentLoaded', function() {
             loadProducts();
+            loadPortfolio();
             initPricingTable();
             initScrollSpy();
         });

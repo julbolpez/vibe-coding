@@ -211,6 +211,9 @@
             animation: fadeInUp 0.5s ease-out backwards;
             transition: all 0.3s ease;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .feed-post::before {
@@ -354,6 +357,9 @@
 
         .post-content {
             padding: 12px 16px 16px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .post-title {
@@ -368,13 +374,14 @@
             font-size: 0.9rem;
             line-height: 1.6;
             margin-bottom: 12px;
+            flex-grow: 1;
         }
 
         .post-price {
             font-size: 1.3rem;
             font-weight: 700;
             color: var(--primary);
-            margin-top: 12px;
+            margin-top: auto;
             padding-top: 12px;
             border-top: 1px solid var(--border);
         }
@@ -469,7 +476,7 @@
         .thumbnail img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             transition: transform 0.3s ease;
         }
 
@@ -608,43 +615,90 @@
 
         /* Portfolio Section */
         .portfolio-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 32px;
-            max-width: 1200px;
+            max-width: 600px;
             margin: 0 auto;
+            padding: 0 16px;
+            display: block;
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: 640px) {
             .portfolio-grid {
+                display: grid;
                 grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+                max-width: 1200px;
+                padding: 0 24px;
             }
         }
 
         @media (min-width: 1024px) {
             .portfolio-grid {
                 grid-template-columns: repeat(3, 1fr);
+                gap: 28px;
+                max-width: 1400px;
+            }
+        }
+
+        @media (min-width: 1440px) {
+            .portfolio-grid {
+                max-width: 1500px;
+                gap: 32px;
             }
         }
 
         .portfolio-item {
             background: var(--dark-card);
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-left: 3px solid var(--gun-grey);
+            border-radius: 0;
             overflow: hidden;
             transition: all 0.3s ease;
             position: relative;
+            animation: fadeInUp 0.5s ease-out backwards;
+            margin-bottom: 24px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .portfolio-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: transparent;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .portfolio-item:hover::before {
+            opacity: 1;
+        }
+
+        .portfolio-item > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 640px) {
+            .portfolio-item {
+                margin-bottom: 0;
+            }
         }
 
         .portfolio-item:hover {
-            transform: translateY(-8px);
-            border-color: var(--primary);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--primary);
+            transform: translateY(-3px);
+            border-left-color: var(--primary);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
         }
 
         .portfolio-item .post-image {
             width: 100%;
-            aspect-ratio: 4 / 3;
+            aspect-ratio: 1 / 1;
             background: linear-gradient(135deg, #25282e 0%, #374151 100%);
             display: flex;
             align-items: center;
@@ -652,12 +706,14 @@
             overflow: hidden;
             position: relative;
             cursor: pointer;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
         .portfolio-item .post-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
         }
 
         .portfolio-badge {
@@ -692,6 +748,9 @@
 
         .portfolio-content {
             padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .portfolio-title {
@@ -706,12 +765,14 @@
             line-height: 1.7;
             font-size: 0.95rem;
             margin-bottom: 16px;
+            flex-grow: 1;
         }
 
         .portfolio-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
+            margin-top: auto;
         }
 
         .portfolio-tag {
@@ -1417,7 +1478,7 @@
         .gallery-thumbnail img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
         }
 
         .gallery-thumbnail:hover {
@@ -1680,38 +1741,8 @@
             <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; color: var(--steel); font-size: 1.05rem;">
                 Explore projects created for clients. Each project showcases our versatility and attention to detail.
             </p>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <div class="post-image">
-                        <img src="images/portfolio/medicine_cabinet1.jpeg" alt="Client Project">
-                        <div class="portfolio-badge">Client Work</div>
-                    </div>
-                    <div class="thumbnails"></div>
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">Medicine Cabinet Organizer</h3>
-                        <p class="portfolio-description">Custom drawer dividers designed to fit client's cabinet. Keeps medications and vitamins neatly organized with precise measurements.</p>
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">Client Project</span>
-                            <span class="portfolio-tag">Organization</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item">
-                    <div class="post-image">
-                        <img src="images/portfolio/ridgeline_tray1.jpeg" alt="Client Project">
-                        <div class="portfolio-badge">Client Work</div>
-                    </div>
-                    <div class="thumbnails"></div>
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">Honda Ridgeline Tray</h3>
-                        <p class="portfolio-description">Custom-fit storage tray designed specifically for client's Honda Ridgeline. Keeps truck bed organized and items secure.</p>
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">Client Project</span>
-                            <span class="portfolio-tag">Vehicle</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="portfolio-grid" id="portfolioGrid">
+                <!-- Portfolio items will be loaded dynamically from products.json -->
             </div>
         </section>
 
@@ -1967,29 +1998,17 @@
         const fallbackData = {
             "products": [
                 {
-                    "id": "water-bottle-cap",
-                    "title": "Water Bottle Cap (Stanley Size)",
-                    "category": "Drinkware Accessory",
-                    "description": "Custom 3D printed replacement cap designed to fit Stanley-size bottles. Durable and leak-resistant design.",
-                    "price": 15,
-                    "image": "images/products/bottle.jpeg",
+                    "id": "garage-fob-clip",
+                    "title": "Garage Fob Sun Visor Clip",
+                    "category": "Automotive",
+                    "description": "Snap-fit sun visor clip that securely holds your garage fob, eliminating the need to carry it loose or in your car. Clips directly onto your sun visor for easy access, just like a traditional garage opener. Originally designed for The Bakerfield residents, but custom versions available for any building or fob style.",
+                    "price": 5,
+                    "image": "images/products/garage_fob1.png",
                     "images": [
-                        "images/products/bottle.jpeg"
+                        "images/products/garage_fob1.png",
+                        "images/products/garage_fob2.png"
                     ],
-                    "imageAlt": "3D printed water bottle cap",
-                    "avatar": ""
-                },
-                {
-                    "id": "utility-clip",
-                    "title": "Utility Clip",
-                    "category": "Organization",
-                    "description": "Versatile clip for organizing cables, tools, or accessories. Secure grip and durable design for everyday use.",
-                    "price": 8,
-                    "image": "images/products/clip.jpeg",
-                    "images": [
-                        "images/products/clip.jpeg"
-                    ],
-                    "imageAlt": "3D printed utility clip",
+                    "imageAlt": "3D printed garage fob sun visor clip",
                     "avatar": ""
                 },
                 {
@@ -1998,9 +2017,9 @@
                     "category": "Kitchen Solution",
                     "description": "Drainage tray designed for your sink. Keeps counters clean and dry with built-in drainage channels.",
                     "price": 20,
-                    "image": "images/products/sink_driptray.jpeg",
+                    "image": "images/products/sink_driptray1.png",
                     "images": [
-                        "images/products/sink_driptray.jpeg"
+                        "images/products/sink_driptray1.png"
                     ],
                     "imageAlt": "3D printed sink drip tray",
                     "avatar": ""
@@ -2011,12 +2030,90 @@
                     "category": "Gaming Setup",
                     "description": "Wall-mounted holder keeps controllers organized and charged. Custom design fits any gaming setup perfectly.",
                     "price": 25,
-                    "image": "images/products/xbox_holder.jpeg",
+                    "image": "images/products/xbox_holder1.png",
                     "images": [
-                        "images/products/xbox_holder.jpeg"
+                        "images/products/xbox_holder1.png"
                     ],
                     "imageAlt": "3D printed floating xbox controller holder",
                     "avatar": ""
+                },
+                {
+                    "id": "mic-holder",
+                    "title": "Microphone Holder",
+                    "category": "Studio & Office",
+                    "description": "Desk-mounted microphone holder designed for podcasters and streamers. Sturdy design keeps your mic secure and accessible.",
+                    "price": 18,
+                    "image": "images/products/mic_holder1.png",
+                    "images": [
+                        "images/products/mic_holder1.png"
+                    ],
+                    "imageAlt": "3D printed microphone holder",
+                    "avatar": ""
+                },
+                {
+                    "id": "water-bottle-cap",
+                    "title": "Water Bottle Cap (Stanley Size)",
+                    "category": "Drinkware Accessory",
+                    "description": "Custom 3D printed replacement cap designed to fit Stanley-size bottles. Durable and leak-resistant design.",
+                    "price": 15,
+                    "image": "images/products/bottle1.png",
+                    "images": [
+                        "images/products/bottle1.png",
+                        "images/products/bottle2.png"
+                    ],
+                    "imageAlt": "3D printed water bottle cap",
+                    "avatar": ""
+                },
+                {
+                    "id": "utility-clip",
+                    "title": "Utility Clip",
+                    "category": "Organization",
+                    "description": "Versatile clip for organizing cables, tools, or accessories. Secure grip and durable design for everyday use.",
+                    "price": 8,
+                    "image": "images/products/clip1.png",
+                    "images": [
+                        "images/products/clip1.png"
+                    ],
+                    "imageAlt": "3D printed utility clip",
+                    "avatar": ""
+                }
+            ],
+            "portfolio": [
+                {
+                    "id": "medicine-cabinet",
+                    "title": "Medicine Cabinet Organizer",
+                    "category": "Custom Storage",
+                    "description": "Space-saving cabinet organizer with adjustable shelves and compartments. Perfect for bathroom or kitchen storage needs.",
+                    "image": "images/portfolio/medicine_cabinet1.jpeg",
+                    "images": [
+                        "images/portfolio/medicine_cabinet1.jpeg",
+                        "images/portfolio/medicine_cabinet2.jpeg"
+                    ],
+                    "imageAlt": "Custom 3D printed medicine cabinet organizer"
+                },
+                {
+                    "id": "monitor-magsafe",
+                    "title": "Monitor MagSafe Mount",
+                    "category": "Tech Accessory",
+                    "description": "Magnetic mounting solution for attaching your phone to your monitor. Clean design integrates seamlessly with any workspace.",
+                    "image": "images/portfolio/monitor_magsafe1.png",
+                    "images": [
+                        "images/portfolio/monitor_magsafe1.png",
+                        "images/portfolio/monitor_magsafe2.png"
+                    ],
+                    "imageAlt": "Custom 3D printed monitor MagSafe mount"
+                },
+                {
+                    "id": "ridgeline-tray",
+                    "title": "Ridgeline Dash Storage Tray",
+                    "category": "Automotive",
+                    "description": "Custom-fit storage tray designed for the Honda Ridgeline dashboard storage hole. Perfectly organizes small items and accessories in your dash compartment.",
+                    "image": "images/portfolio/ridgeline_tray1.png",
+                    "images": [
+                        "images/portfolio/ridgeline_tray1.png",
+                        "images/portfolio/ridgeline_tray2.png"
+                    ],
+                    "imageAlt": "Custom 3D printed Ridgeline dash storage tray"
                 }
             ],
             "contact": {
@@ -2030,81 +2127,6 @@
         // Gallery state
         let currentGalleryImages = [];
         let currentImageIndex = 0;
-
-        // Load portfolio items with gallery functionality
-        function loadPortfolio() {
-            const portfolioItems = [
-                {
-                    title: "Medicine Cabinet Organizer",
-                    images: [
-                        "images/portfolio/medicine_cabinet1.jpeg",
-                        "images/portfolio/medicine_cabinet2.jpeg"
-                    ]
-                },
-                {
-                    title: "Honda Ridgeline Tray",
-                    images: [
-                        "images/portfolio/ridgeline_tray1.jpeg",
-                        "images/portfolio/ridgeline_tray2.jpeg"
-                    ]
-                }
-            ];
-
-            const portfolioCards = document.querySelectorAll('.portfolio-item');
-            
-            portfolioCards.forEach((card, index) => {
-                const item = portfolioItems[index];
-                if (!item) return;
-                
-                const postImage = card.querySelector('.post-image');
-                const thumbnailsContainer = card.querySelector('.thumbnails');
-                
-                // Store images array
-                card.dataset.images = JSON.stringify(item.images);
-                card.dataset.currentImageIndex = '0';
-                
-                // Generate thumbnails
-                if (item.images.length > 1) {
-                    thumbnailsContainer.innerHTML = `
-                        <div class="image-thumbnails">
-                            ${item.images.map((img, idx) => `
-                                <div class="thumbnail ${idx === 0 ? 'active' : ''}" data-index="${idx}">
-                                    <img src="${img}" alt="${item.title}">
-                                </div>
-                            `).join('')}
-                        </div>
-                    `;
-                }
-                
-                // Add click handler for main image
-                postImage.addEventListener('click', function() {
-                    const images = JSON.parse(card.dataset.images);
-                    const currentIndex = parseInt(card.dataset.currentImageIndex);
-                    openGallery(images, currentIndex);
-                });
-                
-                // Add thumbnail click handlers
-                const thumbnails = card.querySelectorAll('.thumbnail');
-                thumbnails.forEach((thumbnail, idx) => {
-                    thumbnail.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        const images = JSON.parse(card.dataset.images);
-                        
-                        if (this.classList.contains('active')) {
-                            openGallery(images, idx);
-                        } else {
-                            const mainImg = postImage.querySelector('img');
-                            mainImg.src = images[idx];
-                            card.dataset.currentImageIndex = idx.toString();
-                            
-                            thumbnails.forEach((thumb, thumbIdx) => {
-                                thumb.classList.toggle('active', thumbIdx === idx);
-                            });
-                        }
-                    });
-                });
-            });
-        }
 
         // Load products from JSON file with fallback
         async function loadProducts() {
@@ -2123,6 +2145,87 @@
             }
             
             renderProducts(data);
+            renderPortfolio(data);
+        }
+
+        // Render portfolio items to the page
+        function renderPortfolio(data) {
+            const portfolioGrid = document.getElementById('portfolioGrid');
+            
+            if (!data.portfolio || data.portfolio.length === 0) {
+                return;
+            }
+            
+            portfolioGrid.innerHTML = '';
+            
+            data.portfolio.forEach((item, index) => {
+                const portfolioCard = document.createElement('div');
+                portfolioCard.className = 'portfolio-item';
+                portfolioCard.style.animationDelay = `${index * 0.1}s`;
+                
+                // Store images array for gallery
+                const images = item.images || [item.image];
+                portfolioCard.dataset.images = JSON.stringify(images);
+                portfolioCard.dataset.currentImageIndex = '0';
+                
+                // Generate thumbnails HTML (always show, even for single images)
+                const thumbnailsHTML = `
+                    <div class="image-thumbnails">
+                        ${images.map((img, idx) => `
+                            <div class="thumbnail ${idx === 0 ? 'active' : ''}" data-index="${idx}">
+                                <img src="${img}" alt="${item.title}">
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                
+                portfolioCard.innerHTML = `
+                    <div class="post-image">
+                        <img src="${item.image}" alt="${item.imageAlt}" style="cursor: pointer;">
+                        <div class="portfolio-badge">Client Work</div>
+                    </div>
+                    ${thumbnailsHTML}
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">${item.title}</h3>
+                        <p class="portfolio-description">${item.description}</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Client Project</span>
+                            <span class="portfolio-tag">${item.category}</span>
+                        </div>
+                    </div>
+                `;
+                
+                portfolioGrid.appendChild(portfolioCard);
+                
+                // Add click event to open gallery
+                const mainImage = portfolioCard.querySelector('.post-image img');
+                mainImage.addEventListener('click', function() {
+                    const currentIndex = parseInt(portfolioCard.dataset.currentImageIndex) || 0;
+                    openGallery(images, currentIndex);
+                });
+                
+                // Add thumbnail click events
+                if (images.length > 1) {
+                    const thumbnails = portfolioCard.querySelectorAll('.thumbnail');
+                    thumbnails.forEach((thumb, idx) => {
+                        thumb.addEventListener('click', function(e) {
+                            e.stopPropagation(); // Prevent triggering parent click
+                            
+                            if (this.classList.contains('active')) {
+                                // Already selected - open gallery
+                                openGallery(images, idx);
+                            } else {
+                                // Switch main image
+                                portfolioCard.dataset.currentImageIndex = idx;
+                                mainImage.src = images[idx];
+                                thumbnails.forEach((t, tIdx) => {
+                                    t.classList.toggle('active', tIdx === idx);
+                                });
+                            }
+                        });
+                    });
+                }
+            });
         }
 
         // Render products to the page
@@ -2140,8 +2243,8 @@
                 const images = product.images || [product.image];
                 productCard.dataset.images = JSON.stringify(images);
                 
-                // Generate thumbnails HTML
-                const thumbnailsHTML = images.length > 1 ? `
+                // Generate thumbnails HTML (always show, even for single images)
+                const thumbnailsHTML = `
                     <div class="image-thumbnails">
                         ${images.map((img, idx) => `
                             <div class="thumbnail ${idx === 0 ? 'active' : ''}" data-index="${idx}">
@@ -2149,7 +2252,7 @@
                             </div>
                         `).join('')}
                     </div>
-                ` : '';
+                `;
                 
                 productCard.innerHTML = `
                     <div class="post-header">
@@ -2159,7 +2262,7 @@
                         </div>
                     </div>
                     <div class="post-image">
-                        <img src="${product.image}" alt="${product.imageAlt}" style="width: 100%; height: 100%; object-fit: cover; filter: hue-rotate(0deg);">
+                        <img src="${product.image}" alt="${product.imageAlt}" style="width: 100%; height: 100%; object-fit: contain; filter: hue-rotate(0deg);">
                     </div>
                     ${thumbnailsHTML}
                     <div class="post-actions">
@@ -2489,7 +2592,6 @@ Please let me know the next steps. Thank you!`;
         // Load products when page loads
         document.addEventListener('DOMContentLoaded', function() {
             loadProducts();
-            loadPortfolio();
             initPricingTable();
             initScrollSpy();
         });

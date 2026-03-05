@@ -1,29 +1,17 @@
 {
   "products": [
     {
-      "id": "water-bottle-cap",
-      "title": "Water Bottle Cap (Stanley Size)",
-      "category": "Drinkware Accessory",
-      "description": "Custom 3D printed replacement cap designed to fit Stanley-size bottles. Durable and leak-resistant design.",
-      "price": 15,
-      "image": "images/products/bottle.jpeg",
+      "id": "garage-fob-clip",
+      "title": "Garage Fob Sun Visor Clip",
+      "category": "Automotive",
+      "description": "Snap-fit sun visor clip that securely holds your garage fob, eliminating the need to carry it loose or in your car. Clips directly onto your sun visor for easy access, just like a traditional garage opener. Originally designed for The Bakerfield residents, but custom versions available for any building or fob style.",
+      "price": 5,
+      "image": "images/products/garage_fob1.png",
       "images": [
-        "images/products/bottle.jpeg"
+        "images/products/garage_fob1.png",
+        "images/products/garage_fob2.png"
       ],
-      "imageAlt": "3D printed water bottle cap",
-      "avatar": ""
-    },
-    {
-      "id": "utility-clip",
-      "title": "Utility Clip",
-      "category": "Organization",
-      "description": "Versatile clip for organizing cables, tools, or accessories. Secure grip and durable design for everyday use.",
-      "price": 8,
-      "image": "images/products/clip.jpeg",
-      "images": [
-        "images/products/clip.jpeg"
-      ],
-      "imageAlt": "3D printed utility clip",
+      "imageAlt": "3D printed garage fob sun visor clip",
       "avatar": ""
     },
     {
@@ -32,9 +20,9 @@
       "category": "Kitchen Solution",
       "description": "Drainage tray designed for your sink. Keeps counters clean and dry with built-in drainage channels.",
       "price": 20,
-      "image": "images/products/sink_driptray.jpeg",
+      "image": "images/products/sink_driptray1.png",
       "images": [
-        "images/products/sink_driptray.jpeg"
+        "images/products/sink_driptray1.png"
       ],
       "imageAlt": "3D printed sink drip tray",
       "avatar": ""
@@ -45,12 +33,90 @@
       "category": "Gaming Setup",
       "description": "Wall-mounted holder keeps controllers organized and charged. Custom design fits any gaming setup perfectly.",
       "price": 25,
-      "image": "images/products/xbox_holder.jpeg",
+      "image": "images/products/xbox_holder1.png",
       "images": [
-        "images/products/xbox_holder.jpeg"
+        "images/products/xbox_holder1.png"
       ],
       "imageAlt": "3D printed floating xbox controller holder",
       "avatar": ""
+    },
+    {
+      "id": "mic-holder",
+      "title": "Microphone Holder",
+      "category": "Studio & Office",
+      "description": "Desk-mounted microphone holder designed for podcasters and streamers. Sturdy design keeps your mic secure and accessible.",
+      "price": 18,
+      "image": "images/products/mic_holder1.png",
+      "images": [
+        "images/products/mic_holder1.png"
+      ],
+      "imageAlt": "3D printed microphone holder",
+      "avatar": ""
+    },
+    {
+      "id": "water-bottle-cap",
+      "title": "Water Bottle Cap (Stanley Size)",
+      "category": "Drinkware Accessory",
+      "description": "Custom 3D printed replacement cap designed to fit Stanley-size bottles. Durable and leak-resistant design.",
+      "price": 15,
+      "image": "images/products/bottle1.png",
+      "images": [
+        "images/products/bottle1.png",
+        "images/products/bottle2.png"
+      ],
+      "imageAlt": "3D printed water bottle cap",
+      "avatar": ""
+    },
+    {
+      "id": "utility-clip",
+      "title": "Utility Clip",
+      "category": "Organization",
+      "description": "Versatile clip for organizing cables, tools, or accessories. Secure grip and durable design for everyday use.",
+      "price": 8,
+      "image": "images/products/clip1.png",
+      "images": [
+        "images/products/clip1.png"
+      ],
+      "imageAlt": "3D printed utility clip",
+      "avatar": ""
+    }
+  ],
+  "portfolio": [
+    {
+      "id": "medicine-cabinet",
+      "title": "Medicine Cabinet Organizer",
+      "category": "Custom Storage",
+      "description": "Space-saving cabinet organizer with adjustable shelves and compartments. Perfect for bathroom or kitchen storage needs.",
+      "image": "images/portfolio/medicine_cabinet1.jpeg",
+      "images": [
+        "images/portfolio/medicine_cabinet1.jpeg",
+        "images/portfolio/medicine_cabinet2.jpeg"
+      ],
+      "imageAlt": "Custom 3D printed medicine cabinet organizer"
+    },
+    {
+      "id": "monitor-magsafe",
+      "title": "Monitor MagSafe Mount",
+      "category": "Tech Accessory",
+      "description": "Magnetic mounting solution for attaching your phone to your monitor. Clean design integrates seamlessly with any workspace.",
+      "image": "images/portfolio/monitor_magsafe1.png",
+      "images": [
+        "images/portfolio/monitor_magsafe1.png",
+        "images/portfolio/monitor_magsafe2.png"
+      ],
+      "imageAlt": "Custom 3D printed monitor MagSafe mount"
+    },
+    {
+      "id": "ridgeline-tray",
+      "title": "Ridgeline Dash Storage Tray",
+      "category": "Automotive",
+      "description": "Custom-fit storage tray designed for the Honda Ridgeline dashboard storage hole. Perfectly organizes small items and accessories in your dash compartment.",
+      "image": "images/portfolio/ridgeline_tray1.png",
+      "images": [
+        "images/portfolio/ridgeline_tray1.png",
+        "images/portfolio/ridgeline_tray2.png"
+      ],
+      "imageAlt": "Custom 3D printed Ridgeline dash storage tray"
     }
   ],
   "contact": {

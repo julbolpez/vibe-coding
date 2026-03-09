@@ -45,6 +45,10 @@
             position: relative;
         }
 
+        body.menu-open {
+            overflow: hidden;
+        }
+
         body::before {
             content: '';
             position: fixed;
@@ -100,6 +104,40 @@
             letter-spacing: 1px;
             border-left: 3px solid var(--primary);
             padding-left: 12px;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--text);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        .nav-overlay {
+            display: none;
         }
 
         .nav-links {
@@ -1597,27 +1635,38 @@
                 padding: 16px 20px;
             }
 
-            .nav-content {
-                flex-direction: column;
-                gap: 12px;
-                align-items: center;
+            .menu-toggle {
+                display: block;
             }
 
             .nav-links {
-                gap: 12px;
-                font-size: 0.85rem;
-                flex-wrap: wrap;
-                justify-content: center;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 280px;
+                background: var(--dark-card);
+                flex-direction: column;
+                padding: 80px 24px 24px;
+                gap: 24px;
+                transition: right 0.3s ease;
+                box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
+                z-index: 1000;
+                border-left: 3px solid var(--primary);
+            }
+
+            .nav-links.active {
+                right: 0;
             }
 
             .nav-links a {
-                padding: 6px 8px;
-                position: relative;
-                white-space: nowrap;
+                font-size: 1.1rem;
+                padding: 12px 0;
+                border-bottom: 1px solid var(--border);
             }
 
             .nav-links a.active::after {
-                bottom: 0;
+                display: none;
             }
 
             .nav-logo {
@@ -1627,16 +1676,11 @@
 
         @media (max-width: 480px) {
             nav {
-                padding: 12px 16px;
+                padding: 16px 16px;
             }
 
             .nav-links {
-                gap: 8px;
-                font-size: 0.75rem;
-            }
-
-            .nav-links a {
-                padding: 4px 6px;
+                width: 250px;
             }
 
             .nav-logo {
@@ -1716,6 +1760,11 @@
         <nav>
             <div class="nav-content">
                 <a href="#" class="nav-logo">א BARA 3D</a>
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 <ul class="nav-links">
                     <li><a href="#products">Products</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
@@ -1813,8 +1862,8 @@
                                 <div class="price">$50+</div>
                                 <div class="price-note">Complex prints</div>
                             </td>
-                            <td class="clickable" data-service="Print Your Models" data-tier="Business" data-price="Custom">
-                                <div class="price">Custom</div>
+                            <td class="clickable" data-service="Print Your Models" data-tier="Business" data-price="Contact Us">
+                                <div class="price">Contact Us</div>
                                 <div class="price-note">Volume pricing</div>
                             </td>
                         </tr>
@@ -1824,16 +1873,16 @@
                                 <div class="price">See Above</div>
                                 <div class="price-note">Prices listed above</div>
                             </td>
-                            <td class="clickable" data-service="Our Designs" data-tier="Standard" data-price="Price + Mods">
-                                <div class="price">Price + Mods</div>
-                                <div class="price-note">Minor modifications</div>
+                            <td class="clickable" data-service="Our Designs" data-tier="Standard" data-price="Price + $30-50">
+                                <div class="price">Price + $30-50</div>
+                                <div class="price-note">Price listed above + Standard features</div>
                             </td>
-                            <td class="clickable" data-service="Our Designs" data-tier="Premium" data-price="$50+">
-                                <div class="price">$50+</div>
-                                <div class="price-note">Custom variations</div>
+                            <td class="clickable" data-service="Our Designs" data-tier="Premium" data-price="Price + $50-150">
+                                <div class="price">Price + $50-150</div>
+                                <div class="price-note">Price listed above + Premium features</div>
                             </td>
-                            <td class="clickable" data-service="Our Designs" data-tier="Business" data-price="Custom">
-                                <div class="price">Custom</div>
+                            <td class="clickable" data-service="Our Designs" data-tier="Business" data-price="Contact Us">
+                                <div class="price">Contact Us</div>
                                 <div class="price-note">Bulk orders</div>
                             </td>
                         </tr>
@@ -1851,8 +1900,8 @@
                                 <div class="price">$150+</div>
                                 <div class="price-note">Complex designs</div>
                             </td>
-                            <td class="clickable" data-service="Custom Design Service" data-tier="Business" data-price="Custom">
-                                <div class="price">Custom</div>
+                            <td class="clickable" data-service="Custom Design Service" data-tier="Business" data-price="Contact Us">
+                                <div class="price">Contact Us</div>
                                 <div class="price-note">Production runs</div>
                             </td>
                         </tr>
@@ -1868,7 +1917,7 @@
                         <li>Standard materials (PLA/PETG)</li>
                         <li>Up to 100g filament</li>
                         <li>1-3 days</li>
-                        <li>Email support</li>
+                        <li>Email/text support</li>
                     </ul>
                 </div>
 
@@ -2002,7 +2051,7 @@
                     "title": "Garage Fob Sun Visor Clip",
                     "category": "Automotive",
                     "description": "Snap-fit sun visor clip that securely holds your garage fob, eliminating the need to carry it loose or in your car. Clips directly onto your sun visor for easy access, just like a traditional garage opener. Originally designed for The Bakerfield residents, but custom versions available for any building or fob style.",
-                    "price": 5,
+                    "price": 10,
                     "image": "images/products/garage_fob1.png",
                     "images": [
                         "images/products/garage_fob1.png",
@@ -2015,7 +2064,7 @@
                     "id": "sink-drip-tray",
                     "title": "Sink Drip Tray",
                     "category": "Kitchen Solution",
-                    "description": "Drainage tray designed for your sink. Keeps counters clean and dry with built-in drainage channels.",
+                    "description": "Perfect drainage tray specially designed for The Bakerfield sinks. Keeps counters clean and dry with built-in drainage channels.",
                     "price": 20,
                     "image": "images/products/sink_driptray1.png",
                     "images": [
@@ -2028,7 +2077,7 @@
                     "id": "floating-xbox-holder",
                     "title": "Floating Xbox Holder",
                     "category": "Gaming Setup",
-                    "description": "Wall-mounted holder keeps controllers organized and charged. Custom design fits any gaming setup perfectly.",
+                    "description": "Under-shelf mount designed to hold an Xbox One console. Saves space and keeps your setup clean. Custom variants available for other console models or even controller holders.",
                     "price": 25,
                     "image": "images/products/xbox_holder1.png",
                     "images": [
@@ -2041,8 +2090,8 @@
                     "id": "mic-holder",
                     "title": "Microphone Holder",
                     "category": "Studio & Office",
-                    "description": "Desk-mounted microphone holder designed for podcasters and streamers. Sturdy design keeps your mic secure and accessible.",
-                    "price": 18,
+                    "description": "Holder designed for wireless lav mics. In this example, it perfectly fits a Hollyland mic that slips right in. Custom sizes available for other mic models.",
+                    "price": 15,
                     "image": "images/products/mic_holder1.png",
                     "images": [
                         "images/products/mic_holder1.png"
@@ -2068,7 +2117,7 @@
                     "id": "utility-clip",
                     "title": "Utility Clip",
                     "category": "Organization",
-                    "description": "Versatile clip for organizing cables, tools, or accessories. Secure grip and durable design for everyday use.",
+                    "description": "Example of a custom repair solution. This headband lamp clip was designed to replace a client's broken original piece. Now it works perfectly and saved them from buying a whole new headband lamp strap.",
                     "price": 8,
                     "image": "images/products/clip1.png",
                     "images": [
@@ -2182,14 +2231,12 @@
                 portfolioCard.innerHTML = `
                     <div class="post-image">
                         <img src="${item.image}" alt="${item.imageAlt}" style="cursor: pointer;">
-                        <div class="portfolio-badge">Client Work</div>
                     </div>
                     ${thumbnailsHTML}
                     <div class="portfolio-content">
                         <h3 class="portfolio-title">${item.title}</h3>
                         <p class="portfolio-description">${item.description}</p>
                         <div class="portfolio-tags">
-                            <span class="portfolio-tag">Client Project</span>
                             <span class="portfolio-tag">${item.category}</span>
                         </div>
                     </div>
@@ -2591,6 +2638,26 @@ Please let me know the next steps. Thank you!`;
 
         // Load products when page loads
         document.addEventListener('DOMContentLoaded', function() {
+            // Hamburger menu toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('.nav-links');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+
+                // Close menu when clicking a link
+                const navItems = document.querySelectorAll('.nav-links a');
+                navItems.forEach(item => {
+                    item.addEventListener('click', function() {
+                        menuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    });
+                });
+            }
+
             loadProducts();
             initPricingTable();
             initScrollSpy();

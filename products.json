@@ -5,7 +5,7 @@
       "title": "Garage Fob Sun Visor Clip",
       "category": "Automotive",
       "description": "Snap-fit sun visor clip that securely holds your garage fob, eliminating the need to carry it loose or in your car. Clips directly onto your sun visor for easy access, just like a traditional garage opener. Originally designed for The Bakerfield residents, but custom versions available for any building or fob style.",
-      "price": 5,
+      "price": 10,
       "image": "images/products/garage_fob1.png",
       "images": [
         "images/products/garage_fob1.png",
@@ -18,7 +18,7 @@
       "id": "sink-drip-tray",
       "title": "Sink Drip Tray",
       "category": "Kitchen Solution",
-      "description": "Drainage tray designed for your sink. Keeps counters clean and dry with built-in drainage channels.",
+      "description": "Perfect drainage tray specially designed for The Bakerfield sinks. Keeps counters clean and dry with built-in drainage channels.",
       "price": 20,
       "image": "images/products/sink_driptray1.png",
       "images": [
@@ -31,7 +31,7 @@
       "id": "floating-xbox-holder",
       "title": "Floating Xbox Holder",
       "category": "Gaming Setup",
-      "description": "Wall-mounted holder keeps controllers organized and charged. Custom design fits any gaming setup perfectly.",
+      "description": "Under-shelf mount designed to hold an Xbox One console. Saves space and keeps your setup clean. Custom variants available for other console models or even controller holders.",
       "price": 25,
       "image": "images/products/xbox_holder1.png",
       "images": [
@@ -44,8 +44,8 @@
       "id": "mic-holder",
       "title": "Microphone Holder",
       "category": "Studio & Office",
-      "description": "Desk-mounted microphone holder designed for podcasters and streamers. Sturdy design keeps your mic secure and accessible.",
-      "price": 18,
+      "description": "Holder designed for wireless lav mics. In this example, it perfectly fits a Hollyland mic that slips right in. Custom sizes available for other mic models.",
+      "price": 15,
       "image": "images/products/mic_holder1.png",
       "images": [
         "images/products/mic_holder1.png"
@@ -71,7 +71,7 @@
       "id": "utility-clip",
       "title": "Utility Clip",
       "category": "Organization",
-      "description": "Versatile clip for organizing cables, tools, or accessories. Secure grip and durable design for everyday use.",
+      "description": "Example of a custom repair solution. This headband lamp clip was designed to replace a client's broken original piece. Now it works perfectly and saved them from buying a whole new headband lamp strap.",
       "price": 8,
       "image": "images/products/clip1.png",
       "images": [

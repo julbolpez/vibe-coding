@@ -1181,6 +1181,15 @@
             background: var(--card-bg);
         }
 
+        /* WhatsApp button styling */
+        button[onclick="sendViaWhatsApp()"] {
+            background: #25D366;
+        }
+
+        button[onclick="sendViaWhatsApp()"]:hover {
+            background: #128C7E;
+        }
+
         .tier-detail-card h3 {
             color: var(--text);
             font-size: 1.2rem;
@@ -1995,9 +2004,10 @@
             
             <div class="message-template" id="messageTemplate">
                 <h3>📋 Your Quote Request</h3>
-                <p style="color: var(--steel); font-size: 0.9rem; margin-bottom: 10px;">Edit the message below with your project details, then copy and send it to us!</p>
+                <p style="color: var(--steel); font-size: 0.9rem; margin-bottom: 10px;">Edit the message below with your project details, then send directly via WhatsApp or copy to send later!</p>
                 <textarea id="quoteMessage" placeholder="Your customized quote request will appear here..."></textarea>
                 <div class="message-template-actions">
+                    <button class="template-btn" onclick="sendViaWhatsApp()">💬 Send via WhatsApp</button>
                     <button class="template-btn" onclick="copyQuoteMessage()">Copy Message</button>
                     <button class="template-btn secondary" onclick="clearQuoteMessage()">Clear</button>
                 </div>
@@ -2008,14 +2018,14 @@
                     <span>📞</span>
                     <span>+1 (905) 715-6464</span>
                 </a>
-                <div class="contact-btn copy-btn" data-copy="9057156464" data-type="WhatsApp">
+                <a href="https://wa.me/19057156464" target="_blank" rel="noopener noreferrer" class="contact-btn" style="text-decoration: none; color: inherit;">
                     <span>💬</span>
                     <span>+1 (905) 715-6464</span>
-                </div>
-                <div class="contact-btn copy-btn" data-copy="julbolpez@gmail.com" data-type="Email">
+                </a>
+                <a href="mailto:julbolpez@gmail.com" class="contact-btn" style="text-decoration: none; color: inherit;">
                     <span>✉️</span>
                     <span>julbolpez@gmail.com</span>
-                </div>
+                </a>
             </div>
         </section>
 
@@ -2168,7 +2178,7 @@
             "contact": {
                 "phone": "+19057156464",
                 "phoneDisplay": "+1 (905) 715-6464",
-                "whatsapp": "9057156464",
+                "whatsapp": "19057156464",
                 "email": "julbolpez@gmail.com"
             }
         };
@@ -2314,7 +2324,7 @@
                     ${thumbnailsHTML}
                     <div class="post-actions">
                         <a href="tel:${data.contact.phone}" class="action-btn" title="Call us">📞</a>
-                        <div class="action-btn copy-btn" data-copy="${data.contact.whatsapp}" data-type="WhatsApp" title="WhatsApp">💬</div>
+                        <a href="https://wa.me/${data.contact.whatsapp}?text=${encodeURIComponent(`Hi! I'm interested in the ${product.title} ($${product.price}). Can you provide more information?`)}" target="_blank" rel="noopener noreferrer" class="action-btn" title="WhatsApp" style="text-decoration: none;">💬</a>
                         <div class="action-btn copy-btn" data-copy="${data.contact.email}" data-type="Email" title="Email">✉️</div>
                     </div>
                     <div class="post-content">
@@ -2551,29 +2561,7 @@ Please let me know the next steps. Thank you!`;
         });
 
         // Copy to clipboard functionality
-        function initCopyButtons() {
-            document.querySelectorAll('.copy-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const textToCopy = this.getAttribute('data-copy');
-                    const type = this.getAttribute('data-type');
-                    
-                    // Copy to clipboard
-                    navigator.clipboard.writeText(textToCopy).then(() => {
-                        // Show notification
-                        const notification = document.getElementById('copiedNotification');
-                        notification.textContent = type + ' Copied!';
-                        notification.classList.add('show');
-                        
-                        // Hide after 2 seconds
-                        setTimeout(() => {
-                            notification.classList.remove('show');
-                        }, 2000);
-                    }).catch(err => {
-                        console.error('Failed to copy:', err);
-                    });
-                });
-            });
-        }
+        // Copy buttons functionality removed - now using direct WhatsApp and mailto links
 
         // Pricing table interaction
         function selectPricingOption(service, tier, price) {
@@ -2614,6 +2602,13 @@ Please let me know the next steps. Thank you!`;
             }).catch(err => {
                 console.error('Failed to copy:', err);
             });
+        }
+
+        function sendViaWhatsApp() {
+            const messageBox = document.getElementById('quoteMessage');
+            const message = messageBox.value;
+            const whatsappURL = `https://wa.me/19057156464?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank', 'noopener,noreferrer');
         }
 
         function clearQuoteMessage() {

@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         :root {
             --primary: #3b82f6;
@@ -97,13 +99,16 @@
         }
 
         .nav-logo {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text);
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            letter-spacing: 1px;
             border-left: 3px solid var(--primary);
             padding-left: 12px;
+        }
+
+        .nav-logo img {
+            height: 40px;
+            width: auto;
         }
 
         .menu-toggle {
@@ -1319,6 +1324,7 @@
             min-height: 60px;
             word-break: break-word;
             text-align: center;
+            position: relative;
         }
 
         .contact-btn span:first-child {
@@ -1330,6 +1336,29 @@
             overflow-wrap: break-word;
             word-wrap: break-word;
             hyphens: auto;
+        }
+
+        .copy-icon {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            opacity: 0.6;
+            font-size: 1rem;
+            transition: opacity 0.3s ease;
+            color: var(--steel);
+        }
+
+        .copy-contact:hover .copy-icon {
+            opacity: 1;
+        }
+
+        /* Show/hide based on device */
+        .desktop-only {
+            display: flex;
+        }
+        
+        .mobile-only {
+            display: none;
         }
 
         .copy-btn {
@@ -1539,6 +1568,15 @@
         }
 
         @media (max-width: 768px) {
+            /* Switch to mobile contact buttons */
+            .desktop-only {
+                display: none !important;
+            }
+            
+            .mobile-only {
+                display: flex !important;
+            }
+
             .gallery-container {
                 max-height: 60vh;
             }
@@ -1678,8 +1716,8 @@
                 display: none;
             }
 
-            .nav-logo {
-                font-size: 1.1rem;
+            .nav-logo img {
+                height: 35px;
             }
         }
 
@@ -1692,8 +1730,8 @@
                 width: 250px;
             }
 
-            .nav-logo {
-                font-size: 1rem;
+            .nav-logo img {
+                height: 30px;
             }
         }
 
@@ -1768,7 +1806,9 @@
         <!-- Navigation -->
         <nav>
             <div class="nav-content">
-                <a href="#" class="nav-logo">א BARA 3D</a>
+                <a href="#" class="nav-logo">
+                    <img src="images/bara3d.png" alt="Bara 3D">
+                </a>
                 <button class="menu-toggle" aria-label="Toggle menu">
                     <span></span>
                     <span></span>
@@ -2014,16 +2054,34 @@
             </div>
             
             <div class="contact-info">
-                <a href="tel:+19057156464" class="contact-btn" style="text-decoration: none; color: inherit;">
-                    <span>📞</span>
+                <!-- Desktop: Copy buttons -->
+                <div class="contact-btn desktop-only copy-contact" data-copy="+1 (905) 715-6464" data-type="Phone">
+                    <span><i class="bi bi-telephone"></i></span>
+                    <span>+1 (905) 715-6464</span>
+                    <span class="copy-icon"><i class="far fa-copy"></i></span>
+                </div>
+                <div class="contact-btn desktop-only copy-contact" data-copy="9057156464" data-type="WhatsApp">
+                    <span><i class="fa-brands fa-whatsapp"></i></span>
+                    <span>+1 (905) 715-6464</span>
+                    <span class="copy-icon"><i class="far fa-copy"></i></span>
+                </div>
+                <div class="contact-btn desktop-only copy-contact" data-copy="julbolpez@gmail.com" data-type="Email">
+                    <span><i class="fa-regular fa-envelope"></i></span>
+                    <span>julbolpez@gmail.com</span>
+                    <span class="copy-icon"><i class="far fa-copy"></i></span>
+                </div>
+                
+                <!-- Mobile: Direct action links -->
+                <a href="tel:+19057156464" class="contact-btn mobile-only" style="text-decoration: none; color: inherit;">
+                    <span><i class="bi bi-telephone"></i></span>
                     <span>+1 (905) 715-6464</span>
                 </a>
-                <a href="https://wa.me/19057156464" target="_blank" rel="noopener noreferrer" class="contact-btn" style="text-decoration: none; color: inherit;">
-                    <span>💬</span>
+                <a href="https://wa.me/19057156464" target="_blank" rel="noopener noreferrer" class="contact-btn mobile-only" style="text-decoration: none; color: inherit;">
+                    <span><i class="fa-brands fa-whatsapp"></i></span>
                     <span>+1 (905) 715-6464</span>
                 </a>
-                <a href="mailto:julbolpez@gmail.com" class="contact-btn" style="text-decoration: none; color: inherit;">
-                    <span>✉️</span>
+                <a href="mailto:julbolpez@gmail.com" class="contact-btn mobile-only" style="text-decoration: none; color: inherit;">
+                    <span><i class="fa-regular fa-envelope"></i></span>
                     <span>julbolpez@gmail.com</span>
                 </a>
             </div>
@@ -2407,9 +2465,6 @@ Please let me know the next steps. Thank you!`;
                     });
                 });
             });
-            
-            // Initialize copy button listeners after products are loaded
-            initCopyButtons();
         }
 
         // Gallery functions
@@ -2561,7 +2616,27 @@ Please let me know the next steps. Thank you!`;
         });
 
         // Copy to clipboard functionality
-        // Copy buttons functionality removed - now using direct WhatsApp and mailto links
+        // Copy contact buttons (desktop only)
+        function initCopyContactButtons() {
+            document.querySelectorAll('.copy-contact').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const textToCopy = this.getAttribute('data-copy');
+                    const type = this.getAttribute('data-type');
+                    
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        const notification = document.getElementById('copiedNotification');
+                        notification.textContent = type + ' Copied!';
+                        notification.classList.add('show');
+                        
+                        setTimeout(() => {
+                            notification.classList.remove('show');
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Failed to copy:', err);
+                    });
+                });
+            });
+        }
 
         // Pricing table interaction
         function selectPricingOption(service, tier, price) {
@@ -2619,6 +2694,28 @@ Please let me know the next steps. Thank you!`;
             templateBox.classList.remove('active');
         }
 
+        // Copy contact buttons (desktop only)
+        function initCopyContactButtons() {
+            document.querySelectorAll('.copy-contact').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const textToCopy = this.getAttribute('data-copy');
+                    const type = this.getAttribute('data-type');
+                    
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        const notification = document.getElementById('copiedNotification');
+                        notification.textContent = type + ' Copied!';
+                        notification.classList.add('show');
+                        
+                        setTimeout(() => {
+                            notification.classList.remove('show');
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Failed to copy:', err);
+                    });
+                });
+            });
+        }
+
         // Initialize pricing table click handlers
         function initPricingTable() {
             document.querySelectorAll('.pricing-table td.clickable').forEach(cell => {
@@ -2656,6 +2753,7 @@ Please let me know the next steps. Thank you!`;
             loadProducts();
             initPricingTable();
             initScrollSpy();
+            initCopyContactButtons();
         });
 
         // Scroll spy for navigation highlighting

@@ -107,7 +107,7 @@
         }
 
         .nav-logo img {
-            height: 40px;
+            height: 81px;
             width: auto;
         }
 
@@ -1717,7 +1717,7 @@
             }
 
             .nav-logo img {
-                height: 35px;
+                height: 69px;
             }
         }
 
@@ -1731,7 +1731,7 @@
             }
 
             .nav-logo img {
-                height: 30px;
+                height: 60px;
             }
         }
 
@@ -1837,7 +1837,7 @@
         <section id="portfolio">
             <h2 class="section-title">Portfolio</h2>
             <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; color: var(--steel); font-size: 1.05rem;">
-                Explore projects created for clients. Each project showcases our versatility and attention to detail.
+                These projects showcase our versatility and problem-solving approach. From automotive accessories to tech mounts and custom organizers, we take on any challenge. Your project could be next!
             </p>
             <div class="portfolio-grid" id="portfolioGrid">
                 <!-- Portfolio items will be loaded dynamically from products.json -->
@@ -2140,62 +2140,54 @@
                     ],
                     "imageAlt": "3D printed sink drip tray",
                     "avatar": ""
-                },
+                }
+            ],
+            "portfolio": [
                 {
                     "id": "floating-xbox-holder",
                     "title": "Floating Xbox Holder",
                     "category": "Gaming Setup",
                     "description": "Under-shelf mount designed to hold an Xbox One console. Saves space and keeps your setup clean. Custom variants available for other console models or even controller holders.",
-                    "price": 25,
                     "image": "images/products/xbox_holder1.png",
                     "images": [
                         "images/products/xbox_holder1.png"
                     ],
-                    "imageAlt": "3D printed floating xbox controller holder",
-                    "avatar": ""
+                    "imageAlt": "3D printed floating xbox controller holder"
                 },
                 {
                     "id": "mic-holder",
                     "title": "Microphone Holder",
                     "category": "Studio & Office",
                     "description": "Holder designed for wireless lav mics. In this example, it perfectly fits a Hollyland mic that slips right in. Custom sizes available for other mic models.",
-                    "price": 15,
                     "image": "images/products/mic_holder1.png",
                     "images": [
                         "images/products/mic_holder1.png"
                     ],
-                    "imageAlt": "3D printed microphone holder",
-                    "avatar": ""
+                    "imageAlt": "3D printed microphone holder"
                 },
                 {
                     "id": "water-bottle-cap",
                     "title": "Water Bottle Cap (Stanley Size)",
                     "category": "Drinkware Accessory",
                     "description": "Custom 3D printed replacement cap designed to fit Stanley-size bottles. Durable and leak-resistant design.",
-                    "price": 15,
                     "image": "images/products/bottle1.png",
                     "images": [
                         "images/products/bottle1.png",
                         "images/products/bottle2.png"
                     ],
-                    "imageAlt": "3D printed water bottle cap",
-                    "avatar": ""
+                    "imageAlt": "3D printed water bottle cap"
                 },
                 {
                     "id": "utility-clip",
                     "title": "Utility Clip",
                     "category": "Organization",
                     "description": "Example of a custom repair solution. This headband lamp clip was designed to replace a client's broken original piece. Now it works perfectly and saved them from buying a whole new headband lamp strap.",
-                    "price": 8,
                     "image": "images/products/clip1.png",
                     "images": [
                         "images/products/clip1.png"
                     ],
-                    "imageAlt": "3D printed utility clip",
-                    "avatar": ""
-                }
-            ],
-            "portfolio": [
+                    "imageAlt": "3D printed utility clip"
+                },
                 {
                     "id": "medicine-cabinet",
                     "title": "Medicine Cabinet Organizer",
@@ -2304,9 +2296,6 @@
                     <div class="portfolio-content">
                         <h3 class="portfolio-title">${item.title}</h3>
                         <p class="portfolio-description">${item.description}</p>
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">${item.category}</span>
-                        </div>
                     </div>
                 `;
                 
@@ -2380,11 +2369,6 @@
                         <img src="${product.image}" alt="${product.imageAlt}" style="width: 100%; height: 100%; object-fit: contain; filter: hue-rotate(0deg);">
                     </div>
                     ${thumbnailsHTML}
-                    <div class="post-actions">
-                        <a href="tel:${data.contact.phone}" class="action-btn" title="Call us">📞</a>
-                        <a href="https://wa.me/${data.contact.whatsapp}?text=${encodeURIComponent(`Hi! I'm interested in the ${product.title} ($${product.price}). Can you provide more information?`)}" target="_blank" rel="noopener noreferrer" class="action-btn" title="WhatsApp" style="text-decoration: none;">💬</a>
-                        <div class="action-btn copy-btn" data-copy="${data.contact.email}" data-type="Email" title="Email">✉️</div>
-                    </div>
                     <div class="post-content">
                         <p class="post-title">${product.title}</p>
                         <p class="post-description">${product.description}</p>

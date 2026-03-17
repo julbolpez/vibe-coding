@@ -1195,6 +1195,15 @@
             background: #128C7E;
         }
 
+        /* Email button styling */
+        button[onclick="sendViaEmail()"] {
+            background: #EA4335;
+        }
+
+        button[onclick="sendViaEmail()"]:hover {
+            background: #C5221F;
+        }
+
         .tier-detail-card h3 {
             color: var(--text);
             font-size: 1.2rem;
@@ -1849,30 +1858,22 @@
             <h2 class="section-title">Our Services</h2>
             <div class="services-grid">
                 <a href="#pricing" class="service-card" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
-                    <h3><span class="service-icon">🖨️</span> Print Your Models</h3>
+                    <h3>Print Your Models</h3>
                     <p>Have an STL file ready? We'll bring it to life with our professional-grade 3D printer. Just send us your file and we'll handle the rest.</p>
                     <p><strong>Perfect for:</strong> Makers, hobbyists, and anyone with a design ready to print</p>
                 </a>
 
                 <a href="#products" class="service-card" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
-                    <h3><span class="service-icon">🎨</span> Our Designs</h3>
-                    <p>Browse our collection of custom-designed prints available for purchase. Each item is thoughtfully designed and ready to ship.</p>
-                    <p><strong>Perfect for:</strong> Finding practical solutions for everyday organization and storage needs</p>
+                    <h3>Our Designs</h3>
+                    <p>Browse our collection of custom-designed prints available for purchase. Each item is thoughtfully designed and ready to ship. Need a different size or color? We're open to modifications!</p>
+                    <p><strong>Perfect for:</strong> Anyone looking for practical, creative solutions for everyday needs</p>
                 </a>
 
                 <a href="#pricing" class="service-card" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
-                    <h3><span class="service-icon">✏️</span> Custom Design Service</h3>
+                    <h3>Custom Design Service</h3>
                     <p>Need something unique? Our full design service includes consultation, 3D modeling, and printing. We'll work with you from concept to completion.</p>
                     <p><strong>Perfect for:</strong> Custom projects, replacement parts, and unique one-of-a-kind items</p>
                 </a>
-
-                <div class="service-card">
-                    <h3><span class="service-icon">📁</span> Digital Files</h3>
-                    <p>Purchase downloadable STL files of our designs to print yourself or with another service.</p>
-                    <a href="https://cults3d.com" target="_blank" rel="noopener" class="service-link">
-                        Visit Our Cults3D Store →
-                    </a>
-                </div>
             </div>
         </section>
 
@@ -1898,7 +1899,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>🖨️ Print Your Models<br><span style="font-size: 0.85rem; color: var(--steel); font-weight: 400;">Filament + Print Time</span></td>
+                            <td>Print Your Models<br><span style="font-size: 0.85rem; color: var(--steel); font-weight: 400;">Filament + Print Time</span></td>
                             <td class="clickable" data-service="Print Your Models" data-tier="Basic" data-price="$15+">
                                 <div class="price">$15+</div>
                                 <div class="price-note">Simple prints</div>
@@ -1917,7 +1918,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>🎨 Our Designs<br><span style="font-size: 0.85rem; color: var(--steel); font-weight: 400;">Pre-designed items</span></td>
+                            <td>Our Designs<br><span style="font-size: 0.85rem; color: var(--steel); font-weight: 400;">Pre-designed items</span></td>
                             <td class="clickable" data-service="Our Designs" data-tier="Basic" data-price="See Above">
                                 <div class="price">See Above</div>
                                 <div class="price-note">Prices listed above</div>
@@ -1936,7 +1937,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>✏️ Custom Design Service<br><span style="font-size: 0.85rem; color: var(--steel); font-weight: 400;">Design + Print + Materials</span></td>
+                            <td>Custom Design Service<br><span style="font-size: 0.85rem; color: var(--steel); font-weight: 400;">Design + Print + Materials</span></td>
                             <td class="clickable" data-service="Custom Design Service" data-tier="Basic" data-price="$50+">
                                 <div class="price">$50+</div>
                                 <div class="price-note">Simple concepts</div>
@@ -2044,11 +2045,12 @@
             
             <div class="message-template" id="messageTemplate">
                 <h3>📋 Your Quote Request</h3>
-                <p style="color: var(--steel); font-size: 0.9rem; margin-bottom: 10px;">Edit the message below with your project details, then send directly via WhatsApp or copy to send later!</p>
+                <p style="color: var(--steel); font-size: 0.9rem; margin-bottom: 10px;">Edit the message below with your project details, then send via WhatsApp/Email (mobile) or copy to send later (desktop)!</p>
                 <textarea id="quoteMessage" placeholder="Your customized quote request will appear here..."></textarea>
                 <div class="message-template-actions">
-                    <button class="template-btn" onclick="sendViaWhatsApp()">💬 Send via WhatsApp</button>
-                    <button class="template-btn" onclick="copyQuoteMessage()">Copy Message</button>
+                    <button class="template-btn mobile-only" onclick="sendViaWhatsApp()">💬 Send via WhatsApp</button>
+                    <button class="template-btn mobile-only" onclick="sendViaEmail()">✉️ Send via Email</button>
+                    <button class="template-btn desktop-only" onclick="copyQuoteMessage()">Copy Message</button>
                     <button class="template-btn secondary" onclick="clearQuoteMessage()">Clear</button>
                 </div>
             </div>
@@ -2133,7 +2135,7 @@
                     "title": "Sink Drip Tray",
                     "category": "Kitchen Solution",
                     "description": "Perfect drainage tray specially designed for The Bakerfield sinks. Keeps counters clean and dry with built-in drainage channels.",
-                    "price": 20,
+                    "price": 25,
                     "image": "images/products/sink_driptray1.png",
                     "images": [
                         "images/products/sink_driptray1.png"
@@ -2624,14 +2626,18 @@ Please let me know the next steps. Thank you!`;
 
         // Pricing table interaction
         function selectPricingOption(service, tier, price) {
-            // If Our Designs is clicked, scroll to products section
-            if (service === 'Our Designs') {
+            // If Our Designs is clicked (but not Business tier), scroll to products section
+            if (service === 'Our Designs' && price === 'See Above') {
                 document.getElementById('products').scrollIntoView({ behavior: 'smooth', block: 'start' });
                 return;
             }
             
             let message;
-            if (service === 'Print Your Models') {
+            
+            // Business tier - special message for volume/production inquiries
+            if (tier === 'Business' || price === 'Contact Us') {
+                message = `Hi! I'm interested in Business/Volume pricing for:\n\nService: ${service}\nTier: ${tier}\n\nBusiness Details:\n[Please describe your project:\n- Quantity needed\n- Frequency of orders (one-time or recurring)\n- Timeline requirements\n- Budget considerations\n- Any special requirements]\n\nThank you!`;
+            } else if (service === 'Print Your Models') {
                 message = `Hi! I'm interested in getting a quote for:\n\nService: ${service}\nTier: ${tier}\nStarting Price: ${price}\n\nModel Link:\n[Paste link to your STL/3D model file - Thingiverse, Printables, Google Drive, etc.]\n\nProject Details:\n[Please describe your project here - materials, colors, quantity, timeline, etc.]\n\nThank you!`;
             } else {
                 message = `Hi! I'm interested in getting a quote for:\n\nService: ${service}\nTier: ${tier}\nStarting Price: ${price}\n\nProject Details:\n[Please describe your project here - dimensions, materials, colors, quantity, timeline, etc.]\n\nThank you!`;
@@ -2670,12 +2676,39 @@ Please let me know the next steps. Thank you!`;
             window.open(whatsappURL, '_blank', 'noopener,noreferrer');
         }
 
+        function sendViaEmail() {
+            const messageBox = document.getElementById('quoteMessage');
+            const message = messageBox.value;
+            const subject = 'Quote Request from Website';
+            const mailtoURL = `mailto:julbolpez@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+            window.location.href = mailtoURL;
+        }
+
         function clearQuoteMessage() {
             const messageBox = document.getElementById('quoteMessage');
             const templateBox = document.getElementById('messageTemplate');
             
             messageBox.value = '';
             templateBox.classList.remove('active');
+        }
+
+        function showContactMessage(contactType) {
+            const message = `Hi! I would like to get in touch about:
+
+[Please describe what you're interested in - custom designs, 3D printing services, questions about products, etc.]
+
+Thank you!`;
+            
+            const messageBox = document.getElementById('quoteMessage');
+            const templateBox = document.getElementById('messageTemplate');
+            
+            messageBox.value = message;
+            templateBox.classList.add('active');
+            
+            // Scroll to message template smoothly
+            setTimeout(() => {
+                templateBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
         }
 
         // Copy contact buttons (desktop only)

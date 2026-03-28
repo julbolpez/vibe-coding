@@ -34,9 +34,9 @@
       "title": "Floating Xbox Holder",
       "category": "Gaming Setup",
       "description": "Under-shelf mount designed to hold an Xbox One console. Saves space and keeps your setup clean. Custom variants available for other console models or even controller holders.",
-      "image": "images/products/xbox_holder1.png",
+      "image": "images/portfolio/xbox_holder1.png",
       "images": [
-        "images/products/xbox_holder1.png"
+        "images/portfolio/xbox_holder1.png"
       ],
       "imageAlt": "3D printed floating xbox controller holder"
     },
@@ -45,34 +45,50 @@
       "title": "Microphone Holder",
       "category": "Studio & Office",
       "description": "Holder designed for wireless lav mics. In this example, it perfectly fits a Hollyland mic that slips right in. Custom sizes available for other mic models.",
-      "image": "images/products/mic_holder1.png",
+      "image": "images/portfolio/mic_holder1.png",
       "images": [
-        "images/products/mic_holder1.png"
+        "images/portfolio/mic_holder1.png"
       ],
       "imageAlt": "3D printed microphone holder"
+    },
+    {
+      "id": "egg-holder",
+      "title": "Custom Easter Eggs",
+      "category": "Seasonal & Festive",
+      "description": "Custom 3D printed Easter eggs showcasing festive flexibility. Each egg is uniquely designed — proof that we can bring a creative, seasonal touch to any project. Perfect for decorations, gifts, or holiday events.",
+      "image": "images/portfolio/egg1.png",
+      "images": [
+        "images/portfolio/egg1.png",
+        "images/portfolio/egg2.png",
+        "images/portfolio/egg3.png",
+        "images/portfolio/egg4.png",
+        "images/portfolio/egg5.png"
+      ],
+      "imageAlt": "Custom 3D printed Easter eggs"
     },
     {
       "id": "water-bottle-cap",
       "title": "Water Bottle Cap (Stanley Size)",
       "category": "Drinkware Accessory",
       "description": "Custom 3D printed replacement cap designed to fit Stanley-size bottles. Durable and leak-resistant design.",
-      "image": "images/products/bottle1.png",
+      "image": "images/portfolio/bottle1.png",
       "images": [
-        "images/products/bottle1.png",
-        "images/products/bottle2.png"
+        "images/portfolio/bottle1.png",
+        "images/portfolio/bottle2.png"
       ],
       "imageAlt": "3D printed water bottle cap"
     },
     {
-      "id": "utility-clip",
-      "title": "Utility Clip",
-      "category": "Organization",
-      "description": "Example of a custom repair solution. This headband lamp clip was designed to replace a client's broken original piece. Now it works perfectly and saved them from buying a whole new headband lamp strap.",
-      "image": "images/products/clip1.png",
+      "id": "ridgeline-tray",
+      "title": "Ridgeline Dash Storage Tray",
+      "category": "Automotive",
+      "description": "Custom-fit storage tray designed for the Honda Ridgeline dashboard storage hole. Perfectly organizes small items and accessories in your dash compartment.",
+      "image": "images/portfolio/ridgeline_tray1.png",
       "images": [
-        "images/products/clip1.png"
+        "images/portfolio/ridgeline_tray1.png",
+        "images/portfolio/ridgeline_tray2.png"
       ],
-      "imageAlt": "3D printed utility clip"
+      "imageAlt": "Custom 3D printed Ridgeline dash storage tray"
     },
     {
       "id": "medicine-cabinet",
@@ -99,37 +115,15 @@
       "imageAlt": "Custom 3D printed monitor MagSafe mount"
     },
     {
-      "id": "ridgeline-tray",
-      "title": "Ridgeline Dash Storage Tray",
-      "category": "Automotive",
-      "description": "Custom-fit storage tray designed for the Honda Ridgeline dashboard storage hole. Perfectly organizes small items and accessories in your dash compartment.",
-      "image": "images/portfolio/ridgeline_tray1.png",
+      "id": "utility-clip",
+      "title": "Utility Clip",
+      "category": "Organization",
+      "description": "Example of a custom repair solution. This headband lamp clip was designed to replace a client's broken original piece. Now it works perfectly and saved them from buying a whole new headband lamp strap.",
+      "image": "images/portfolio/clip1.png",
       "images": [
-        "images/portfolio/ridgeline_tray1.png",
-        "images/portfolio/ridgeline_tray2.png"
+        "images/portfolio/clip1.png"
       ],
-      "imageAlt": "Custom 3D printed Ridgeline dash storage tray"
-    }
-  ],
-      "description": "Magnetic mounting solution for attaching your phone to your monitor. Clean design integrates seamlessly with any workspace.",
-      "image": "images/portfolio/monitor_magsafe1.png",
-      "images": [
-        "images/portfolio/monitor_magsafe1.png",
-        "images/portfolio/monitor_magsafe2.png"
-      ],
-      "imageAlt": "Custom 3D printed monitor MagSafe mount"
-    },
-    {
-      "id": "ridgeline-tray",
-      "title": "Ridgeline Dash Storage Tray",
-      "category": "Automotive",
-      "description": "Custom-fit storage tray designed for the Honda Ridgeline dashboard storage hole. Perfectly organizes small items and accessories in your dash compartment.",
-      "image": "images/portfolio/ridgeline_tray1.png",
-      "images": [
-        "images/portfolio/ridgeline_tray1.png",
-        "images/portfolio/ridgeline_tray2.png"
-      ],
-      "imageAlt": "Custom 3D printed Ridgeline dash storage tray"
+      "imageAlt": "3D printed utility clip"
     }
   ],
   "contact": {

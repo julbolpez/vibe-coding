@@ -41,15 +41,16 @@
       "imageAlt": "3D printed floating xbox controller holder"
     },
     {
-      "id": "mic-holder",
-      "title": "Microphone Holder",
-      "category": "Studio & Office",
-      "description": "Holder designed for wireless lav mics. In this example, it perfectly fits a Hollyland mic that slips right in. Custom sizes available for other mic models.",
-      "image": "images/portfolio/mic_holder1.png",
+      "id": "monitor-magsafe",
+      "title": "Monitor MagSafe Mount",
+      "category": "Tech Accessory",
+      "description": "Magnetic mounting solution for attaching your phone to your monitor. Clean design integrates seamlessly with any workspace.",
+      "image": "images/portfolio/monitor_magsafe1.png",
       "images": [
-        "images/portfolio/mic_holder1.png"
+        "images/portfolio/monitor_magsafe1.png",
+        "images/portfolio/monitor_magsafe2.png"
       ],
-      "imageAlt": "3D printed microphone holder"
+      "imageAlt": "Custom 3D printed monitor MagSafe mount"
     },
     {
       "id": "egg-holder",
@@ -103,16 +104,15 @@
       "imageAlt": "Custom 3D printed medicine cabinet organizer"
     },
     {
-      "id": "monitor-magsafe",
-      "title": "Monitor MagSafe Mount",
-      "category": "Tech Accessory",
-      "description": "Magnetic mounting solution for attaching your phone to your monitor. Clean design integrates seamlessly with any workspace.",
-      "image": "images/portfolio/monitor_magsafe1.png",
+      "id": "mic-holder",
+      "title": "Microphone Holder",
+      "category": "Studio & Office",
+      "description": "Holder designed for wireless lav mics. In this example, it perfectly fits a Hollyland mic that slips right in. Custom sizes available for other mic models.",
+      "image": "images/portfolio/mic_holder1.png",
       "images": [
-        "images/portfolio/monitor_magsafe1.png",
-        "images/portfolio/monitor_magsafe2.png"
+        "images/portfolio/mic_holder1.png"
       ],
-      "imageAlt": "Custom 3D printed monitor MagSafe mount"
+      "imageAlt": "3D printed microphone holder"
     },
     {
       "id": "utility-clip",
